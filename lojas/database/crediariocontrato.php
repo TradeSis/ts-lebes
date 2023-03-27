@@ -13,7 +13,7 @@ function buscaContratos($numeroContrato)
 		));
 	
 
-	$retorno = chamaAPI('crediario/contrato', 'crediario/contrato', json_encode($apiEntrada), 'GET');
+	$retorno = chamaAPI(null, '/ts/crediario/contrato', json_encode($apiEntrada), 'GET');
 
    
 	if (isset($retorno["conteudoSaida"])) {
