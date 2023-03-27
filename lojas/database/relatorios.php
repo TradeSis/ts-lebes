@@ -9,7 +9,7 @@ function buscaRelatorios($parametros)
 	$apiEntrada = array(
 		'parametros' => $parametros,
 	);
-	$relatorios = chamaAPI('relatorios', 'relatorios', json_encode($apiEntrada), 'GET');
+	$relatorios = chamaAPI(null, '/relatorios/listagem', json_encode($apiEntrada), 'GET');
 	return $relatorios;
 }
 if (isset($_GET['operacao'])) {
@@ -31,7 +31,7 @@ if (isset($_GET['operacao'])) {
 			'relatnom' => $_POST['relatnom'],
 			'parametros' => $parametros,
 		);
-		$relatorios = chamaAPI('relatorios', 'relatorios', json_encode($apiEntrada), 'PUT');
+		$relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
 	}
 
 	header('Location: ../consultas/relatorios_parametros.php'); 

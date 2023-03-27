@@ -17,9 +17,7 @@ function buscaDescontos($codigoLoja)
 			array('codigoLoja' => $codigoLoja)
 		));
 	
-
-	$retorno = chamaAPI('consultaMargemDesconto', 'consultaMargemDesconto', json_encode($apiEntrada), 'GET');
-
+	$retorno = chamaAPI('http://172.19.130.175:5555', '/gateway/pdvRestAPI/1.0/consultaMargemDescontoRestResource', json_encode($apiEntrada), 'POST');
    
 	if (isset($retorno["consultaMargemDescontoSaida"])) {
 		if (isset($retorno["consultaMargemDescontoSaida"]["margemDesconto"])) {
