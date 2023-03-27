@@ -11,16 +11,16 @@ function chamaAPI ($api,$apiUrlParametros,$apiEntrada,$apiMethod) {
     
     switch ($api) {
         case "seguros":
-            $apiUrl = $apiIP.'/api/ts/' . $apiUrlParametros;
+            $apiUrl = $apiIP.'/ts/' . $apiUrlParametros;
         break;
         case "relatorios":
-            $apiUrl = $apiIP.'/api/ts/' . $apiUrlParametros;
+            $apiUrl = $apiIP.'/ts/' . $apiUrlParametros;
         break;
 		case "crediario/contrato":
-            $apiUrl = $apiIP.'/api/ts/' . $apiUrlParametros;
+            $apiUrl = $apiIP.'/ts/' . $apiUrlParametros;
         break;
         case "crediario/cliente":
-            $apiUrl = $apiIP.'/api/ts/' . $apiUrlParametros;
+            $apiUrl = $apiIP.'/ts/' . $apiUrlParametros;
         break;		
         case "consultaMargemDesconto":
             // helio 17022023 coloquei direto a URL da Lebes e o Metodo POST
