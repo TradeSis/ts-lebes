@@ -14,7 +14,7 @@ function chamaAPI ($api,$apiUrlParametros,$apiEntrada,$apiMethod) {
             $apiUrl = $apiIP.'/ts/' . $apiUrlParametros;
         break;
         case "relatorios":
-            $apiUrl = $apiIP.'/ts/' . $apiUrlParametros;
+            $apiUrl = $apiIP.'/relatorios/' . $apiUrlParametros;
         break;
 		case "crediario/contrato":
             $apiUrl = $apiIP.'/ts/' . $apiUrlParametros;
