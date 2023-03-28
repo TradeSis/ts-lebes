@@ -81,7 +81,7 @@ include_once 'conexao.php';
                             <span class="fs-5 text">Relatorios</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#" src="relatorios/frsalcart_parametros.php">Vencidos e a vencer</a>
+                            <a class="dropdown-item" href="#" src="relatorios/frsalcart.php">Vencidos e a vencer</a>
                             
                         </div>
                     </li>
