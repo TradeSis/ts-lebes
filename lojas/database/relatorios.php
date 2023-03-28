@@ -16,7 +16,7 @@ if (isset($_GET['operacao'])) {
 
 	$operacao = $_GET['operacao'];
 
-	if ($operacao == "inserir") {
+	if ($operacao == "relat") {
 		$parametros = array(
 			'codigoCliente' => $_POST['codigoCliente'],
 			'codigoFilial' => $_POST['codigoFilial'],
@@ -33,8 +33,26 @@ if (isset($_GET['operacao'])) {
 		);
 		$relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
 	}
+	if ($operacao == "frsalcart") {
+		$parametros = array(
+			'modalidade' => $_POST['modalidade'],
+			'codigoFilial' => $_POST['codigoFilial'],
+			'dataRef' => $_POST['dataRef'],
+			'consideralp' => $_POST['consideralp'],
+			'considerafeirao' => $_POST['considerafeirao'],
+			'anoemissao' => $_POST['anoemissao'],
+			'clientesnovos' => $_POST['clientesnovos'],
+		);
+		$apiEntrada = array(
+			'usercod' => $_POST['usercod'],
+			'progcod' => $_POST['progcod'],
+			'relatnom' => $_POST['relatnom'],
+			'parametros' => $parametros,
+		);
+		$relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
+	}
 
-	header('Location: ../consultas/relatorios_parametros.php'); 
+	header('Location: ../consultas/relatorios.php'); 
 }
 
 ?>

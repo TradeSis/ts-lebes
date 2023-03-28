@@ -19,7 +19,7 @@ include_once('../head.php');
             </div>
             <div class="container" style="margin-top: 10px">
 
-                <form action="../database/relatorios.php?operacao=inserir" method="post">
+                <form action="../database/relatorios.php?operacao=relat" method="post">
                     <div class="row">
                         <div class="col">
                             <label>Usuário</label>
