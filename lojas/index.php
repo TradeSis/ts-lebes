@@ -67,7 +67,6 @@ include_once 'conexao.php';
                             <a class="dropdown-item" href="#" src="clientes/contratos_parametros.php">Contratos</a>
                         </div>
                     </li>
-
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="fs-5 text">Consultas</span>
@@ -75,8 +74,15 @@ include_once 'conexao.php';
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#" src="consultas/relatorios.php">Relatórios</a>
                             <a class="dropdown-item" href="#" src="consultas/desconto_parametros.php">Descontos</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="fs-5 text">Relatorios</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#" src="relatorios/frsalcart_parametros.php">Vencidos e a vencer</a>
                             
-
                         </div>
                     </li>
 
