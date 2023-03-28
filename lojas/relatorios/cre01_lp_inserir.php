@@ -10,7 +10,7 @@ include_once('../head.php');
             <div class="card-header border-1">
                 <div class="row">
                     <div class="col-10">
-                        <h4 class="col">Posição Vencidos e a vencer</h4>
+                        <h4 class="col">Posição de cliente por periodo - B</h4>
                     </div>
                     <div class="col-sm" style="text-align:right">
                         <a href="#" onclick="history.back()" role="button" class="btn btn-primary btn-sm">Voltar</a>
@@ -19,7 +19,7 @@ include_once('../head.php');
             </div>
             <div class="container" style="margin-top: 10px">
 
-                <form action="../database/relatorios.php?operacao=frsalcart" method="post">
+                <form action="../database/relatorios.php?operacao=relqtdNovo" method="post">
                     <div class="row">
                         <div class="col">
                             <label>Usuário</label>
@@ -30,24 +30,27 @@ include_once('../head.php');
                         <div class="col">
                             <label>Programa</label>
                             <div class="form-group">
-                                <input type="text" name="progcod" class="form-control" value="frsalcart.p" autocomplete="off" readonly>
+                                <input type="text" name="progcod" class="form-control" value="cre01_lp.p" autocomplete="off" readonly>
                             </div>
                         </div>
                     </div>
                     <label>Nome do relatório</label>
                     <div class="form-group">
-                        <input type="text" name="relatnom" class="form-control" value="Posicao Vencidos e a vencer" autocomplete="off" readonly>
+                        <input type="text" name="relatnom" class="form-control" value="Posicao de cliente por periodo - B" autocomplete="off" readonly>
                     </div>
                     <div class="row">
                         <div class="form-group col">
-                            <label>Cliente</label>
-                            <input type="text" class="form-control" name="cliente" value="Geral">
-                        </div>
-                        <div class="form-group col">
                             <label>Modalidade</label>
                             <select class="form-control" name="modalidade">
-                                <option value="CRE">Nao</option>
-                                <option value="CRE">CRE</option>
+                                <option value="crediario">Crediario</option>
+                                <option value="emprestimos">Emprestimos</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label>Posição</label>
+                            <select class="form-control" name="posicao">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
                             </select>
                         </div>
                     </div>
@@ -57,8 +60,12 @@ include_once('../head.php');
                             <input type="number" class="form-control" name="codigoFilial">
                         </div>
                         <div class="form-group col">
-                            <label>Data Referencia</label>
-                            <input type="date" class="form-control" name="dataRef">
+                            <label>Data Inicial</label>
+                            <input type="date" class="form-control" name="dataInicial">
+                        </div>
+                        <div class="form-group col">
+                            <label>Data Final</label>
+                            <input type="date" class="form-control" name="dataFinal">
                         </div>
                     </div>
                     <div class="row">
@@ -72,22 +79,6 @@ include_once('../head.php');
                         <div class="form-group col">
                             <label>Considerar apenas feirao</label>
                             <select class="form-control" name="considerafeirao">
-                                <option value="Nao">Nao</option>
-                                <option value="Sim">Sim</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col">
-                            <label>Abre por Ano de Emissao</label>
-                            <select class="form-control" name="anoemissao">
-                                <option value="Nao">Nao</option>
-                                <option value="Sim">Sim</option>
-                            </select>
-                        </div>
-                        <div class="form-group col">
-                            <label>Somente clientes novos (até 30 pagas)</label>
-                            <select class="form-control" name="clientesnovos">
                                 <option value="Nao">Nao</option>
                                 <option value="Sim">Sim</option>
                             </select>

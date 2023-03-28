@@ -7,16 +7,13 @@ include_once '../database/relatorios.php';
 $parametros=null;
 if (isset($_GET['parametros'])) {
     $parametros = array(
-        'modalidade' => $_POST['modalidade'],
-        'codigoFilial' => $_POST['codigoFilial'],
-        'dataRef' => $_POST['dataRef'],
-        'consideralp' => $_POST['consideralp'],
-        'considerafeirao' => $_POST['considerafeirao'],
-        'anoemissao' => $_POST['anoemissao'],
-        'clientesnovos' => $_POST['clientesnovos'],
+        'posicao' => $_POST['posicao'],
+		'codigoFilial' => $_POST['codigoFilial'],
+		'dataInicial' => $_POST['dataInicial'],
+		'dataFinal' => $_POST['dataFinal'],
     );
 }
-//$progcod="frsalcart.p"
+//$progcod="cred01.p"
 $relatorios = buscaRelatorios($parametros);
 ?>
 <!DOCTYPE html>
@@ -32,10 +29,10 @@ $relatorios = buscaRelatorios($parametros);
             <div class="card-header">
                 <div class="row">
                     <div class="col-10">
-                        <h3 class="col">Posição vencidos e a vencer</h3>
+                        <h3 class="col">Extrato de cobrança simples</h3>
                     </div>
                     <div class="col-2" style="text-align:right">
-                        <a href="frsalcart_inserir.php" role="button" class="btn btn-success btn-sm">Novo Relatório</a>
+                        <a href="cred01_inserir.php" role="button" class="btn btn-success btn-sm">Novo Relatório</a>
                     </div>
                 </div>
             </div>
