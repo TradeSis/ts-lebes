@@ -45,6 +45,7 @@ include_once 'conexao.php';
                             <a class="dropdown-item" href="#" src="clientes/seguros_parametros.php">Seguros</a>
                             <a class="dropdown-item" href="#" src="clientes/historico_parametros.php">Histórico Clientes</a>
                             <a class="dropdown-item" href="#" src="clientes/contratos_parametros.php">Contratos</a>
+                            <a class="dropdown-item" href="#" src="clientes/cupomcashback_parametros.php">Cupom Cashback</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

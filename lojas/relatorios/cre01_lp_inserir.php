@@ -49,8 +49,8 @@ include_once('../head.php');
                         <div class="form-group col">
                             <label>Posição</label>
                             <select class="form-control" name="posicao">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                                <option value="1">Posição 1</option>
+                                <option value="2">Posição 2</option>
                             </select>
                         </div>
                     </div>
