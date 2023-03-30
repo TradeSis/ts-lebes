@@ -60,7 +60,7 @@
                 var result = []
                 $.ajax({
                     dataType: "json",
-                    url:"/ts/api/ts/produtos/"+prod,
+                    url:"/bsweb/apilebes/ts/produtos/"+prod,
                     //url:"buscaproduto.php", //teste
                     type: "GET",
                     async: false,

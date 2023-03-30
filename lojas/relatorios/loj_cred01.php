@@ -8,13 +8,16 @@ $parametros=null;
 if (isset($_GET['parametros'])) {
     $parametros = array(
         'posicao' => $_POST['posicao'],
-		'codigoFilial' => $_POST['codigoFilial'],
-		'dataInicial' => $_POST['dataInicial'],
-		'dataFinal' => $_POST['dataFinal'],
+                'codigoFilial' => $_POST['codigoFilial'],
+                'dataInicial' => $_POST['dataInicial'],
+                'dataFinal' => $_POST['dataFinal'],
     );
 }
-//$progcod="cred01.p"
-$relatorios = buscaRelatorios($parametros);
+
+$progcod="loj_cred01";
+
+$relatorios = buscaRelatorios($progcod,null);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -32,7 +35,7 @@ $relatorios = buscaRelatorios($parametros);
                         <h3 class="col">Extrato de cobrança simples</h3>
                     </div>
                     <div class="col-2" style="text-align:right">
-                        <a href="cred01_inserir.php" role="button" class="btn btn-success btn-sm">Novo Relatório</a>
+                        <a href="loj_cred01_inserir.php" role="button" class="btn btn-success btn-sm">Novo Relatório</a>
                     </div>
                 </div>
             </div>

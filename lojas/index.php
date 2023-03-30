@@ -66,7 +66,7 @@ include_once 'conexao.php';
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#" src="relatorios/frsalcart.php">Vencidos e a vencer</a>
                             <a class="dropdown-item" href="#" src="relatorios/relqtdNovo.php">Liquidações diarias p/ periodo</a>
-                            <a class="dropdown-item" href="#" src="relatorios/cred01.php">Extrato de cobrança simples</a>
+                            <a class="dropdown-item" href="#" src="relatorios/loj_cred01.php">Extrato de cobrança simples</a>
                             <a class="dropdown-item" href="#" src="relatorios/cre01_ma.php">Posição de cliente por periodo - A</a>
                             <a class="dropdown-item" href="#" src="relatorios/cre01_lp.php">Posição de cliente por periodo - B</a>
                             

@@ -19,7 +19,7 @@ include_once('../head.php');
             </div>
             <div class="container" style="margin-top: 10px">
 
-                <form action="../database/relatorios.php?operacao=relqtdNovo" method="post">
+                <form action="../database/relatorios.php?operacao=loj_cred01" method="post">
                     <div class="row">
                         <div class="col">
                             <label>Usuário</label>
@@ -30,7 +30,7 @@ include_once('../head.php');
                         <div class="col">
                             <label>Programa</label>
                             <div class="form-group">
-                                <input type="text" name="progcod" class="form-control" value="cred01.p" autocomplete="off" readonly>
+                                <input type="text" name="progcod" class="form-control" value="loj_cred01" autocomplete="off" readonly>
                             </div>
                         </div>
                     </div>
