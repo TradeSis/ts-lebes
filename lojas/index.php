@@ -55,6 +55,8 @@ include_once 'conexao.php';
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#" src="consultas/relatorios.php">Relatórios</a>
                             <a class="dropdown-item" href="#" src="consultas/desconto_parametros.php">Descontos</a>
+                            <a class="dropdown-item" href="#" src="consultas/produtodisp.php">Produto Disponível</a>
+                            <a class="dropdown-item" href="#" src="consultas/bonusclien.php">Bonus Cliente</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
