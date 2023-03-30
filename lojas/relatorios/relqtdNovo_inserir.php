@@ -9,53 +9,40 @@ include_once('../head.php');
         <div class="card shadow">
             <div class="card-header border-1">
                 <div class="row">
-                    <div class="col-sm">
-                        <h3 class="col">Inserir Relatório</h3>
+                    <div class="col-10">
+                        <h4 class="col">Resumo liquidações diarias p/ periodo</h4>
                     </div>
                     <div class="col-sm" style="text-align:right">
-                        <a href="relatorios.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
+                        <a href="#" onclick="history.back()" role="button" class="btn btn-primary btn-sm">Voltar</a>
                     </div>
                 </div>
             </div>
             <div class="container" style="margin-top: 10px">
 
-                <form action="../database/relatorios.php?operacao=relat" method="post">
+                <form action="../database/relatorios.php?operacao=relqtdNovo" method="post">
                     <div class="row">
                         <div class="col">
                             <label>Usuário</label>
                             <div class="form-group">
-                                <input type="text" name="usercod" class="form-control" placeholder="Digite o nome do Usuário" autocomplete="off">
+                                <input type="text" name="usercod" class="form-control" value="Lebes" autocomplete="off" readonly>
                             </div>
                         </div>
                         <div class="col">
                             <label>Programa</label>
                             <div class="form-group">
-                                <input type="text" name="progcod" class="form-control" placeholder="rel.p" autocomplete="off">
+                                <input type="text" name="progcod" class="form-control" value="relqtdNovo.p" autocomplete="off" readonly>
                             </div>
                         </div>
                     </div>
                     <label>Nome do relatório</label>
                     <div class="form-group">
-                        <input type="text" name="relatnom" class="form-control" placeholder="Digite o nome do Relatório" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label>Código Cliente</label>
-                        <input type="text" class="form-control" name="codigoCliente">
+                        <input type="text" name="relatnom" class="form-control" value="Resumo liquidacoes diarias p/ periodo" autocomplete="off" readonly>
                     </div>
                     <div class="row">
                         <div class="form-group col">
                             <label>Filial</label>
                             <input type="number" class="form-control" name="codigoFilial">
                         </div>
-                        <div class="form-group col">
-                            <label>Modalidade</label>
-                            <select class="form-control" name="modalidade">
-                                <option value=""></option>
-                                <option value="CRE">CRE</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="form-group col">
                             <label>Data Inicial</label>
                             <input type="date" class="form-control" name="dataInicial">
@@ -65,12 +52,9 @@ include_once('../head.php');
                             <input type="date" class="form-control" name="dataFinal">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Certificado</label>
-                        <input type="number" class="form-control" name="numeroCertificado">
-                    </div>
+                    
                     <div class="card-footer bg-transparent" style="text-align:right">
-                        <button type="submit" class="btn btn-sm btn-success">Cadastrar</button>
+                        <button type="submit" class="btn btn-sm btn-success">Gerar Relatório</button>
                     </div>
                 </form>
             </div>

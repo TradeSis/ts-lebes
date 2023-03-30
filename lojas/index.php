@@ -11,30 +11,10 @@ include_once 'conexao.php';
 <html lang="pt-BR">
 
 <head>
-
+    <link rel="stylesheet" type="text/css" href="menu.css">
     <link rel="stylesheet" type="text/css" href="css/etiqueta_normal_styles.css" />
 
-    <style rel="stylesheet" type="text/css">
-        .estilo1 {
-            background-color: #2FB12B;
-            border: 0px solid;
-        }
 
-        .rowfull {
-            height: 80vh;
-
-        }
-
-        .my-custom-scrollbar {
-            position: relative;
-            height: 350px;
-            overflow: auto;
-        }
-
-        .table-wrapper-scroll-y {
-            display: block;
-        }
-    </style>
 </head>
 
 <body>
@@ -42,7 +22,7 @@ include_once 'conexao.php';
 
         <div class="row estilo1">
             <div class="col-md-2  estilo1">
-                <img src="../img/logoLebes.png" class="img-thumbnail estilo1" alt="Assistente de Vendas Lebes">
+                <img src="../img/logoLebes.png" class="estilo1" alt="Assistente de Vendas Lebes">
             </div>
 
             <!-- Navbar -->
@@ -65,9 +45,9 @@ include_once 'conexao.php';
                             <a class="dropdown-item" href="#" src="clientes/seguros_parametros.php">Seguros</a>
                             <a class="dropdown-item" href="#" src="clientes/historico_parametros.php">Histórico Clientes</a>
                             <a class="dropdown-item" href="#" src="clientes/contratos_parametros.php">Contratos</a>
+                            <a class="dropdown-item" href="#" src="clientes/cupomcashback_parametros.php">Cupom Cashback</a>
                         </div>
                     </li>
-
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="fs-5 text">Consultas</span>
@@ -75,8 +55,19 @@ include_once 'conexao.php';
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#" src="consultas/relatorios.php">Relatórios</a>
                             <a class="dropdown-item" href="#" src="consultas/desconto_parametros.php">Descontos</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="fs-5 text">Relatorios</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#" src="relatorios/frsalcart.php">Vencidos e a vencer</a>
+                            <a class="dropdown-item" href="#" src="relatorios/relqtdNovo.php">Liquidações diarias p/ periodo</a>
+                            <a class="dropdown-item" href="#" src="relatorios/cred01.php">Extrato de cobrança simples</a>
+                            <a class="dropdown-item" href="#" src="relatorios/cre01_ma.php">Posição de cliente por periodo - A</a>
+                            <a class="dropdown-item" href="#" src="relatorios/cre01_lp.php">Posição de cliente por periodo - B</a>
                             
-
                         </div>
                     </li>
 
@@ -91,15 +82,13 @@ include_once 'conexao.php';
         </div>
 
 
-        <div class="container-fluid full-width">
-            <iframe class="container-fluid full-width" id="myIframe" src="" frameborder="0" scrolling="yes" height="800"></iframe>
+        <div class="diviFrame" style="overflow:hidden;">
+            <iframe class="iFrame container-fluid " id="myIframe" src="" frameborder="0" height="650"></iframe>
         </div>
 
 
 
-        <?php
-        include 'footer.php';
-        ?>
+        
     </div>
 
 </body>
@@ -120,16 +109,20 @@ include_once 'conexao.php';
 
             $("#myIframe").attr('src', value);
         })
-        // SELECT MENU
-        $("#novoMenu2 a").click(function() {
+        $("#novoMenu2 a").click(function () {
 
-            var value = $(this).text();
-            value = $(this).attr('src');
+        var value = $(this).text();
+        value = $(this).attr('src');
 
-            //IFRAME TAG
-            if (value != '') {
-                $("#myIframe").attr('src', value);
-            }
+        //IFRAME TAG
+        if (value) {
+
+            $("#myIframe").attr('src', value);
+
+            $('.diviFrame').removeClass('mostra');
+
+
+        }
 
         })
 
