@@ -16,8 +16,9 @@ if (isset($_GET['parametros'])) {
         'considerafeirao' => $_POST['considerafeirao'],
     );
 }
-//$progcod="cre01_ma.p"
-$relatorios = buscaRelatorios($parametros);
+$progcod="cre01_ma.p";
+
+$relatorios = buscaRelatorios($progcod,$parametros);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -35,7 +36,7 @@ $relatorios = buscaRelatorios($parametros);
                         <h3 class="col">Posição cliente por periodo - A</h3>
                     </div>
                     <div class="col-2" style="text-align:right">
-                        <a href="cre01_ma_inserir.php" role="button" class="btn btn-success btn-sm">Novo Relatório</a>
+                        <a href="loj_cre01_ma_inserir.php" role="button" class="btn btn-success btn-sm">Novo Relatório</a>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ include_once('../head.php');
             <div class="card-header border-1">
                 <div class="row">
                     <div class="col-10">
-                        <h4 class="col">Posição de cliente por periodo - B</h4>
+                        <h4 class="col">Posição de cliente por periodo - A</h4>
                     </div>
                     <div class="col-sm" style="text-align:right">
                         <a href="#" onclick="history.back()" role="button" class="btn btn-primary btn-sm">Voltar</a>
@@ -30,13 +30,13 @@ include_once('../head.php');
                         <div class="col">
                             <label>Programa</label>
                             <div class="form-group">
-                                <input type="text" name="progcod" class="form-control" value="cre01_lp.p" autocomplete="off" readonly>
+                                <input type="text" name="progcod" class="form-control" value="loj_cre01_ma.p" autocomplete="off" readonly>
                             </div>
                         </div>
                     </div>
                     <label>Nome do relatório</label>
                     <div class="form-group">
-                        <input type="text" name="relatnom" class="form-control" value="Posicao de cliente por periodo - B" autocomplete="off" readonly>
+                        <input type="text" name="relatnom" class="form-control" value="Posicao de cliente por periodo - A" autocomplete="off" readonly>
                     </div>
                     <div class="row">
                         <div class="form-group col">
@@ -81,6 +81,16 @@ include_once('../head.php');
                             <select class="form-control" name="considerafeirao">
                                 <option value="Nao">Nao</option>
                                 <option value="Sim">Sim</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label>Ordenação</label>
+                            <select class="form-control" name="ordem">
+                                <option value="alfa">Alfabetica</option>
+                                <option value="venc">Vencimento</option>
+                                <option value="bairro">Bairro</option>
+                                <option value="valorvenc">Valor Vencido</option>
+                                <option value="novacao">Novação</option>
                             </select>
                         </div>
                     </div>

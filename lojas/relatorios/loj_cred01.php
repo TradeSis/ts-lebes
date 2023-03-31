@@ -16,7 +16,7 @@ if (isset($_GET['parametros'])) {
 
 $progcod="loj_cred01";
 
-$relatorios = buscaRelatorios($progcod,null);
+$relatorios = buscaRelatorios($progcod,$parametros);
 
 ?>
 <!DOCTYPE html>

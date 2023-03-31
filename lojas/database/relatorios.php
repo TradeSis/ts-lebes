@@ -83,6 +83,7 @@ if (isset($_GET['operacao'])) {
                         'codigoFilial' => $_POST['codigoFilial'],
                         'dataInicial' => $_POST['dataInicial'],
                         'dataFinal' => $_POST['dataFinal'],
+                        'ordem' => $_POST['ordem'],
                 );
                 $apiEntrada = array(
                         'usercod' => $_POST['usercod'],
@@ -95,7 +96,7 @@ if (isset($_GET['operacao'])) {
         }
         
         //-POSICAO DE CLIENTE POR PERIODO - A
-        if ($operacao == "cre01_ma") {
+        if ($operacao == "loj_cre01_ma") {
                 $parametros = array(
                         'modalidade' => $_POST['modalidade'],
                         'posicao' => $_POST['posicao'],
@@ -104,6 +105,7 @@ if (isset($_GET['operacao'])) {
                         'dataFinal' => $_POST['dataFinal'],
                         'consideralp' => $_POST['consideralp'],
                         'considerafeirao' => $_POST['considerafeirao'],
+                        'ordem' => $_POST['ordem'],
                 );
                 $apiEntrada = array(
                         'usercod' => $_POST['usercod'],
@@ -115,7 +117,7 @@ if (isset($_GET['operacao'])) {
         }
         
         //-POSICAO DE CLIENTE POR PERIODO - B
-        if ($operacao == "cre01_lp") {
+        if ($operacao == "loj_cre01_lp") {
                 $parametros = array(
                         'modalidade' => $_POST['modalidade'],
                         'posicao' => $_POST['posicao'],
@@ -124,6 +126,7 @@ if (isset($_GET['operacao'])) {
                         'dataFinal' => $_POST['dataFinal'],
                         'consideralp' => $_POST['consideralp'],
                         'considerafeirao' => $_POST['considerafeirao'],
+                        'ordem' => $_POST['ordem'],
                 );
                 $apiEntrada = array(
                         'usercod' => $_POST['usercod'],

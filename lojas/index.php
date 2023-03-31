@@ -67,8 +67,8 @@ include_once 'conexao.php';
                             <a class="dropdown-item" href="#" src="relatorios/frsalcart.php">Vencidos e a vencer</a>
                             <a class="dropdown-item" href="#" src="relatorios/relqtdNovo.php">Liquidações diarias p/ periodo</a>
                             <a class="dropdown-item" href="#" src="relatorios/loj_cred01.php">Extrato de cobrança simples</a>
-                            <a class="dropdown-item" href="#" src="relatorios/cre01_ma.php">Posição de cliente por periodo - A</a>
-                            <a class="dropdown-item" href="#" src="relatorios/cre01_lp.php">Posição de cliente por periodo - B</a>
+                            <a class="dropdown-item" href="#" src="relatorios/loj_cre01_ma.php">Posição de cliente por periodo - A</a>
+                            <a class="dropdown-item" href="#" src="relatorios/loj_cre01_lp.php">Posição de cliente por periodo - B</a>
                             
                         </div>
                     </li>
