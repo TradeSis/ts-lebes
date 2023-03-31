@@ -40,6 +40,7 @@ procedure marcatsrelat.
     then do:
         tsrelat.dtproc = today.
         tsrelat.hrinic = time.
+        tsrelat.nomeArquivo = "PROCESSANDO...".
     end.    
     else do:
         tsrelat.nomeArquivo = varquivo.

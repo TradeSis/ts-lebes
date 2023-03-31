@@ -61,7 +61,7 @@ then do:
     vdtvenfim   = dataFinal.
     find estab where estab.etbcod = ttparametros.codigoFilial no-lock.
     
-    varquivo = "loj_cred01" + string(today,"999999") + string(time).
+    varquivo = "loj_cred01_" + string(pidrelat).
     vsaida   = vdir + varquivo + ".txt".
     {mdadmcab.i
         &Saida     = value(vsaida)
