@@ -13,8 +13,8 @@ def temp-table ttparametros serialize-name "parametros"
     field posicao       as int
     field codigoFilial  as int
     field dataInicial   as date
-    field dataFinal     as date.
-    field ordem     as char.
+    field dataFinal     as date
+    field ordem     as log.
     
 hEntrada = temp-table ttparametros:HANDLE.
 hentrada:READ-JSON("longchar",lcjsonentrada, "EMPTY").
@@ -55,7 +55,9 @@ def new shared temp-table tt-extrato
         field ord as int
             index ind-1 ord.
 
- 
+if ordem = 1
+then valfa = yes.
+else valfa = no.
 if ttparametros.posicao = 1
 then do:
     vdtvenini   = dataInicial.
@@ -420,9 +422,3 @@ then do:
     os-command silent value("rm -f " + vdir + varquivo + ".txt").    
 
 end.
-
-
-
-                    
-
-
