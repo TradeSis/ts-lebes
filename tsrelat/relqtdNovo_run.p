@@ -32,7 +32,6 @@ def var vdata   like plani.pladat.
 def var vdtini  like plani.pladat.
 def var vdtfin  like plani.pladat.
 def var vtotal  like titulo.titvlcob column-label "Total".
-def var vdir    as char.
 
 def temp-table wftotal
     field etbcod    like estab.etbcod       column-label "Estab"
@@ -57,7 +56,7 @@ if ttparametros.codigoFilial > 9 and ttparametros.codigoFilial < 100
 if ttparametros.codigoFilial > 99
     then vdir = "/admcom/relat-loja/filial" + string(ttparametros.codigoFilial) + "/relat/resumo-liq-fl" + string(ttparametros.codigoFilial) + "-" + string(time) + ".txt".
 
-then do:
+do:
     vdtini   = dataInicial.
     vdtfin   = dataFinal.
     find estab where estab.etbcod = ttparametros.codigoFilial no-lock.
