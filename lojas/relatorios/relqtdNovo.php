@@ -12,8 +12,9 @@ if (isset($_GET['parametros'])) {
         'dataFinal' => $_POST['dataFinal'],
     );
 }
-//$progcod="relqtdNovo.p"
-$relatorios = buscaRelatorios($parametros);
+$progcod="relqtdNovo";
+
+$relatorios = buscaRelatorios($progcod,$parametros);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

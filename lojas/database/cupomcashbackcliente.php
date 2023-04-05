@@ -16,7 +16,7 @@ function buscaCashback($codigoCliente,$cpfCNPJ,$situacao)
 		));
 	
 
-	$retorno = chamaAPI(null, '/ts/cupomcashback', json_encode($apiEntrada), 'GET');
+	$retorno = chamaAPI(null, '/clientes/cupomcashback', json_encode($apiEntrada), 'GET');
 
    
 	if (isset($retorno["conteudoSaida"])) {

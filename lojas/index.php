@@ -46,6 +46,8 @@ include_once 'conexao.php';
                             <a class="dropdown-item" href="#" src="clientes/historico_parametros.php">Histórico Clientes</a>
                             <a class="dropdown-item" href="#" src="clientes/contratos_parametros.php">Contratos</a>
                             <a class="dropdown-item" href="#" src="clientes/cupomcashback_parametros.php">Cupom Cashback</a>
+                            <a class="dropdown-item" href="#" src="consultas/bonusclien.php">Bonus Cliente</a>
+                            
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -53,8 +55,8 @@ include_once 'conexao.php';
                             <span class="fs-5 text">Consultas</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#" src="consultas/relatorios.php">Relatórios</a>
                             <a class="dropdown-item" href="#" src="consultas/desconto_parametros.php">Descontos</a>
+                            <a class="dropdown-item" href="#" src="consultas/produtodisp.php">Produto Disponível</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -62,11 +64,10 @@ include_once 'conexao.php';
                             <span class="fs-5 text">Relatorios</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#" src="relatorios/frsalcart.php">Vencidos e a vencer</a>
                             <a class="dropdown-item" href="#" src="relatorios/relqtdNovo.php">Liquidações diarias p/ periodo</a>
-                            <a class="dropdown-item" href="#" src="relatorios/cred01.php">Extrato de cobrança simples</a>
-                            <a class="dropdown-item" href="#" src="relatorios/cre01_ma.php">Posição de cliente por periodo - A</a>
-                            <a class="dropdown-item" href="#" src="relatorios/cre01_lp.php">Posição de cliente por periodo - B</a>
+                            <a class="dropdown-item" href="#" src="relatorios/loj_cred01.php">Extrato de cobrança simples</a>
+                            <a class="dropdown-item" href="#" src="relatorios/loj_cre01_ma.php">Posição de cliente por periodo - A</a>
+                            <a class="dropdown-item" href="#" src="relatorios/loj_cre01_lp.php">Posição de cliente por periodo - B</a>
                             
                         </div>
                     </li>

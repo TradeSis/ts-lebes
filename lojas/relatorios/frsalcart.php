@@ -16,8 +16,9 @@ if (isset($_GET['parametros'])) {
         'clientesnovos' => $_POST['clientesnovos'],
     );
 }
-//$progcod="frsalcart.p"
-$relatorios = buscaRelatorios($parametros);
+$progcod="frsalcart";
+
+$relatorios = buscaRelatorios($progcod,$parametros);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

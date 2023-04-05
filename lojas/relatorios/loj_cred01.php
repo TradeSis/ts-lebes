@@ -7,17 +7,17 @@ include_once '../database/relatorios.php';
 $parametros=null;
 if (isset($_GET['parametros'])) {
     $parametros = array(
-        'modalidade' => $_POST['modalidade'],
         'posicao' => $_POST['posicao'],
-        'codigoFilial' => $_POST['codigoFilial'],
-        'dataInicial' => $_POST['dataInicial'],
-        'dataFinal' => $_POST['dataFinal'],
-        'consideralp' => $_POST['consideralp'],
-        'considerafeirao' => $_POST['considerafeirao'],
+                'codigoFilial' => $_POST['codigoFilial'],
+                'dataInicial' => $_POST['dataInicial'],
+                'dataFinal' => $_POST['dataFinal'],
     );
 }
-//$progcod="cre01_lp.p"
-$relatorios = buscaRelatorios($parametros);
+
+$progcod="loj_cred01";
+
+$relatorios = buscaRelatorios($progcod,$parametros);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -32,10 +32,10 @@ $relatorios = buscaRelatorios($parametros);
             <div class="card-header">
                 <div class="row">
                     <div class="col-10">
-                        <h3 class="col">Posição cliente por periodo - B</h3>
+                        <h3 class="col">Extrato de cobrança simples</h3>
                     </div>
                     <div class="col-2" style="text-align:right">
-                        <a href="cre01_lp_inserir.php" role="button" class="btn btn-success btn-sm">Novo Relatório</a>
+                        <a href="loj_cred01_inserir.php" role="button" class="btn btn-success btn-sm">Novo Relatório</a>
                     </div>
                 </div>
             </div>

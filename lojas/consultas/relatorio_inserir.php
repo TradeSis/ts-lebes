@@ -30,7 +30,7 @@ include_once('../head.php');
                         <div class="col">
                             <label>Programa</label>
                             <div class="form-group">
-                                <input type="text" name="progcod" class="form-control" placeholder="rel.p" autocomplete="off">
+                                <input type="text" name="progcod" class="form-control" placeholder="rel" autocomplete="off">
                             </div>
                         </div>
                     </div>

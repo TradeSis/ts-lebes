@@ -4,18 +4,8 @@
 include_once '../head.php';
 include_once '../database/relatorios.php';
 
-$parametros=null;
-if (isset($_GET['parametros'])) {
-    $parametros = array(
-        'codigoCliente' => $_POST['codigoCliente'],
-        'codigoFilial' => $_POST['codigoFilial'],
-        'modalidade' => $_POST['modalidade'],
-        'dataInicial' => $_POST['dataInicial'],
-        'dataFinal' => $_POST['dataFinal'],
-        'numeroCertificado' => $_POST['numeroCertificado'],
-    );
-}
-$relatorios = buscaRelatorios($parametros);
+
+$relatorios = buscaRelatorios(null,null);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
