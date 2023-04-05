@@ -69,7 +69,7 @@ include_once('../head.php');
                             <label>Ordenação</label>
                             <select class="form-control" name="ordem">
                                 <option value="1">Alfabetica</option>
-                                <option value="2">Vencimento</option>
+                                <option value="0">Vencimento</option>
                             </select>
                         </div>
                     </div>

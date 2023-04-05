@@ -86,11 +86,9 @@ include_once('../head.php');
                         <div class="form-group col">
                             <label>Ordenação</label>
                             <select class="form-control" name="ordem">
-                                <option value="alfa">Alfabetica</option>
-                                <option value="venc">Vencimento</option>
-                                <option value="bairro">Bairro</option>
-                                <option value="valorvenc">Valor Vencido</option>
-                                <option value="novacao">Novação</option>
+                                <option value="1">Alfabetica</option>
+                                <option value="2">Vencimento</option>
+                                <option value="3">Novação</option>
                             </select>
                         </div>
                     </div>
