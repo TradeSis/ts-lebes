@@ -38,6 +38,8 @@ if (isset($_GET['operacao'])) {
                         'parametros' => $parametros,
                 );
                 $relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
+                
+                header('Location: ../consultas/relatorios.php'); 
         }
         
         //POSICAO VENCIDOS E A VENCER
@@ -58,6 +60,8 @@ if (isset($_GET['operacao'])) {
                         'parametros' => $parametros,
                 );
                 $relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
+                
+                header('Location: ../relatorios/frsalcart.php'); 
         }
         
         //RESUMO LIQUIDACOES DIARIAS P/ PERIODO
@@ -74,6 +78,8 @@ if (isset($_GET['operacao'])) {
                         'parametros' => $parametros,
                 );
                 $relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
+                
+                header('Location: ../relatorios/relqtdNovo.php'); 
         }
         
         //-EXTRATO DE COBRANCA SIMPLES
@@ -93,6 +99,8 @@ if (isset($_GET['operacao'])) {
                         'parametros' => $parametros,
                 );
                 $relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
+                
+                header('Location: ../relatorios/loj_cred01.php'); 
         }
         
         //-POSICAO DE CLIENTE POR PERIODO - A
@@ -114,6 +122,8 @@ if (isset($_GET['operacao'])) {
                         'parametros' => $parametros,
                 );
                 $relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
+                
+                header('Location: ../relatorios/loj_cre01_ma.php'); 
         }
         
         //-POSICAO DE CLIENTE POR PERIODO - B
@@ -134,10 +144,10 @@ if (isset($_GET['operacao'])) {
                         'relatnom' => $_POST['relatnom'],
                         'parametros' => $parametros,
                 );
+                
                 $relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
+                header('Location: ../relatorios/loj_cre01_lp.php'); 
         }
-
-        header('Location: ../consultas/relatorios.php'); 
 }
 
 ?>
