@@ -14,7 +14,7 @@ def temp-table ttparametros serialize-name "parametros"
     field codigoFilial  as int
     field dataInicial   as date
     field dataFinal     as date
-    field ordem         as log.
+    field ordem         as int.
     
 hEntrada = temp-table ttparametros:HANDLE.
 hentrada:READ-JSON("longchar",lcjsonentrada, "EMPTY").
@@ -55,7 +55,7 @@ def new shared temp-table tt-extrato
         field ord as int
             index ind-1 ord.
 
-if ordem
+if ttparametros.ordem = 1
 then valfa = yes.
 else valfa = no.
 if ttparametros.posicao = 1
@@ -109,16 +109,6 @@ then do:
                            tt-depen.nome   = clien.clinom
                            tt-depen.dtnas  = titulo.titdtven.
                 end.
-                output stream stela to terminal.
-                    display stream stela
-                            titulo.clifor
-                            titulo.titnum
-                            titulo.titpar
-                            titulo.titdtven
-                                with frame f-tela centered
-                                    1 down side-label. pause 0.
-
-                output stream stela close.
             end.
         end.
         for each tt-depen where tt-depen.etbcod = estab.etbcod

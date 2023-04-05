@@ -47,26 +47,10 @@ def var vfil17 as char extent 2 format "x(15)"
 
 def var vindex as int.
 
-if ttparametros.codigoFilial > 0 and ttparametros.codigoFilial < 10
-    then vdir = "/admcom/relat-loja/filial00" + string(ttparametros.codigoFilial) + "/relat/resumo-liq-fl00" + string(ttparametros.codigoFilial) + "-" + string(time) + ".txt".
-
-if ttparametros.codigoFilial > 9 and ttparametros.codigoFilial < 100
-    then vdir = "/admcom/relat-loja/filial0" + string(ttparametros.codigoFilial) + "/relat/resumo-liq-fl0" + string(ttparametros.codigoFilial) + "-" + string(time) + ".txt".
-
-if ttparametros.codigoFilial > 99
-    then vdir = "/admcom/relat-loja/filial" + string(ttparametros.codigoFilial) + "/relat/resumo-liq-fl" + string(ttparametros.codigoFilial) + "-" + string(time) + ".txt".
-
 do:
     vdtini   = dataInicial.
     vdtfin   = dataFinal.
     find estab where estab.etbcod = ttparametros.codigoFilial no-lock.
-    
-    vindex = 0.
-    if estab.etbcod = 17
-    then do:
-
-        vindex = frame-index.
-    end.
     
 
 def var v-feirao-nome-limpo as log init no.
@@ -151,7 +135,10 @@ def var v-feirao-nome-limpo as log init no.
     end.
 end.
 
-output to value(vdir).
+varquivo = "relqtdNovo_" + string(pidrelat).
+vsaida   = vdir + varquivo + ".txt".
+
+output to value(vsaida).
 
     form header wempre.emprazsoc
              space(6) "RELQDTNOVO_040418" at 112
@@ -187,6 +174,16 @@ output to value(vdir).
     end.
 
 output close.
-
+def var vpdf as char.
+    run pdfout.p (input vdir + varquivo + ".txt",
+                  input vdir,
+                  input varquivo + ".pdf",
+                  input "Landscape", /* Landscape/Portrait */
+                  input 7,
+                  input 1,
+                  output vpdf).
+ 
+    run marcatsrelat (vdirweb + varquivo + ".pdf").
+    os-command silent value("rm -f " + vdir + varquivo + ".txt").    
 
 

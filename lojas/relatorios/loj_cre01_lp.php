@@ -16,7 +16,7 @@ if (isset($_GET['parametros'])) {
         'considerafeirao' => $_POST['considerafeirao'],
     );
 }
-$progcod="cre01_lp.p";
+$progcod="loj_cre01_lp";
 
 $relatorios = buscaRelatorios($progcod,$parametros);
 ?>

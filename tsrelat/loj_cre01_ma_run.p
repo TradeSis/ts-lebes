@@ -5,7 +5,7 @@ then do:
     message "Erro parametros idRelat" .
     return.
 end.
-
+message "loj_cre01_ma_run.p".
 {tsrelat.i}
 {admcab-batch.i new}
 
@@ -22,22 +22,19 @@ field ordem     as int.
 hEntrada = temp-table ttparametros:HANDLE.
 hentrada:READ-JSON("longchar",lcjsonentrada, "EMPTY").
 
-
 find first ttparametros no-error.
 disp ttparametros.
 
 /* inicio normal progress. */
 
 
-def input param pmodalidade as char.
-
 def temp-table ttmodal no-undo
 field modcod like modal.modcod.
-if pmodalidade = "CREDIARIO"
-then do
-create ttmodal. ttmodal.modcod = "CRE".
+if ttparametros.modalidade = "CREDIARIO"
+then do:
+    create ttmodal. ttmodal.modcod = "CRE".
 end.
-if pmodalidade = "EMPRESTIMOS"
+if ttparametros.modalidade = "EMPRESTIMOS"
 then do:
     create ttmodal. ttmodal.modcod = "CP0".
     create ttmodal. ttmodal.modcod = "CP1".
@@ -49,7 +46,6 @@ def var vpdf as char no-undo.
 def var vtpcontrato as char format "x(1)" label "T". /*#1 */
 
 def var ii as int.
-def stream stela.
 def var vdata like plani.pladat.
 def var vqtdcli as integer.
 def var vdtvenini as date format "99/99/9999".
@@ -76,23 +72,23 @@ field valmont  like titulo.titvlcob
 index key      clicod
 index key2     valmont.
 
-def temp-table tt-titulo no-undo	
-field etbcod like titulo.etbcod	
-field clifor like titulo.clifor	
-field clinom like clien.clinom	
-field fone like clien.fone	
-field fax  like clien.fax	
-field titnum like titulo.titnum	
-field titpar like titulo.titpar	
-field modcod like titulo.modcod	
-field tpcontrato like titulo.tpcontrato	
-field titdtemi like titulo.titdtemi	
-field titdtven like titulo.titdtven	
-field titvlcob like titulo.titvlcob	
-field dias     as int	
-field imp as log	
-index i1 clinom	
-.	
+def temp-table tt-titulo no-undo        
+field etbcod like titulo.etbcod        
+field clifor like titulo.clifor        
+field clinom like clien.clinom        
+field fone like clien.fone        
+field fax  like clien.fax        
+field titnum like titulo.titnum        
+field titpar like titulo.titpar        
+field modcod like titulo.modcod        
+field tpcontrato like titulo.tpcontrato        
+field titdtemi like titulo.titdtemi        
+field titdtven like titulo.titdtven        
+field titvlcob like titulo.titvlcob        
+field dias     as int        
+field imp as log        
+index i1 clinom        
+.        
 
 def var vqtite as int.
 
@@ -130,7 +126,6 @@ index i-cidbai  cidade bairro.
 def buffer btitulo for titulo.
 def buffer bttvven for ttvven.
 
-def var varquivo as char.
 
 def var vfil17 as char extent 2 format "x(15)"
 init["Nova","Antiga"].
@@ -156,7 +151,7 @@ if ttparametros.posicao = 1
 then do:        
     if setbcod = 999
     then do:
-        update vetbcod colon 25 with title pmodalidade + " - Posicao I ".
+        update vetbcod colon 25 with title ttparametros.modalidade + " - Posicao I ".
     end.
     else do:
         vetbcod = ttparametros.codigoFilial.
@@ -195,13 +190,15 @@ then do:
     end.
     run p-gera.
     
-    valfa = ttparametros.ordem    
-    varquivo = "cre02_a" + string(setbcod) + "_" + string(today,"99999999") + "_" + replace(string(time,"HH:MM:SS"),":","").
-    hide message no-pause.
-    message "gerando relatorio" varquivo.
+    valfa = ttparametros.ordem  .
+    
+    
+    varquivo = "loj_cre01_ma" + string(pidrelat).
+    vsaida   = vdir + varquivo + ".txt".
+    
     
     {mdadmcab.i
-    &Saida     = "value(""/admcom/relat/"" + varquivo + "".txt"")"
+    &Saida     = "value(vsaida)"
     &Page-Size = "0"
     &Cond-Var  = "120"
     &Page-Line = "66"
@@ -212,7 +209,6 @@ then do:
     &Width     = "120"
     &Form      = "frame f-cab"}
     
-    message "cre02_a" pmodalidade " - Posicao I - Ordem" vcont-cli[valfa].
     
     assign vqtdcli = 0 VSUBTOT = 0.
     
@@ -227,36 +223,21 @@ then do:
     "TOTAL CLIENTES:" vqtdcli skip
     "TOTAL GERAL   :" vsubtot with frame ff no-labels no-box.
     output close.
-    hide message no-pause.
     
-    run visurel.p ("/admcom/relat/" + varquivo + ".txt" ,"").
-    sresp = no.
-    message "Deseja gerar um PDF do relatorio? " update sresp.
-    if sresp
-    then do:
-        run pdfout.p (input "/admcom/relat/" + varquivo + ".txt",
-        input "/admcom/kbase/pdfout/",
-        input varquivo + ".pdf",
-        input "Portrait",
-        input 8.2,
-        input 1,
-        output vpdf).
-        
-        message ("Arquivo " + vpdf + " gerado com sucesso!").
-    end.
-    
-    hide frame fqtite no-pause.
-    hide frame f-tela no-pause.
-    sresp = no.
-    message "Deseja gerar extratos? " update sresp.
-    if sresp
-    then do:
-        hide frame f1 no-pause.
-        message "Aguarde... Processando ...".
-        run loj/extrato2.p (input valfa).
-    end.
-    
+    run pdfout.p (input vdir + varquivo + ".txt",
+                  input vdir,
+                  input varquivo + ".pdf",
+                  input "Landscape", /* Landscape/Portrait */
+                  input 7,
+                  input 1,
+                  output vpdf).
+ 
+    run marcatsrelat (vdirweb + varquivo + ".pdf").
+    os-command silent value("rm -f " + vdir + varquivo + ".txt").    
+
     return.
+end.
+
 end.
 
 /* = = = = = = = = = = = = = = = = = = = = = */
@@ -337,15 +318,6 @@ procedure p-gera:
         
         vsubtot = vsubtot + titulo.titvlcob.
         
-        output stream stela to terminal.
-        display stream stela
-        titulo.clifor
-        titulo.titnum
-        titulo.titpar
-        titulo.titdtven
-        with frame f-tela centered
-        1 down no-label. pause 0.
-        output stream stela close.
         
         find first tt-bairro where
         tt-bairro.cidade = clien.cidade[1] and
@@ -538,19 +510,7 @@ then do:
 end.
 end procedure.
 
-run pdfout.p (input vdir + varquivo + ".txt",
-                  input vdir,
-                  input varquivo + ".pdf",
-                  input "Landscape", /* Landscape/Portrait */
-                  input 7,
-                  input 1,
-                  output vpdf).
- 
-    run marcatsrelat (vdirweb + varquivo + ".pdf").
-    os-command silent value("rm -f " + vdir + varquivo + ".txt").    
-
-end.
-
+/*****
 /**************** POSIÇÃO 2 ****************/
 if ttparametros.posicao = 2
 then do:
@@ -726,16 +686,6 @@ if v-consulta-parcelas-LP = yes
 and v-parcela-lp = no
 then next.
 
-output stream stela to terminal.
-display stream stela
-titulo.clifor
-titulo.titnum
-titulo.titpar
-titulo.titdtven
-
-with frame f-tela centered
-1 down no-label. pause 0.
-output stream stela close.
 
 find first btitulo use-index iclicod
 where btitulo.empcod = wempre.empcod and
@@ -887,15 +837,6 @@ procedure p-vencimento:
         and v-parcela-lp = no
         then next.
         
-        output stream stela to terminal.
-        display stream stela
-        titulo.clifor
-        titulo.titnum
-        titulo.titpar
-        titulo.titdtven
-        with frame f-tela centered
-        1 down no-label. pause 0.
-        output stream stela close.
         
         find first btitulo use-index iclicod
         where btitulo.empcod = wempre.empcod and
@@ -1048,15 +989,6 @@ if v-consulta-parcelas-LP = yes
 and v-parcela-lp = no
 then next.
 
-output stream stela to terminal.
-display stream stela
-titulo.clifor
-titulo.titnum
-titulo.titpar
-titulo.titdtven
-with frame f-tela centered
-1 down no-label. pause 0.
-output stream stela close.
 find first btitulo use-index iclicod
 where btitulo.empcod = wempre.empcod and
 btitulo.titnat = no            and
@@ -1215,15 +1147,6 @@ first clien where clien.clicod = titulo.clifor no-lock :
     and v-parcela-lp = no
     then next.
     
-    output stream stela to terminal.
-    display stream stela
-    titulo.clifor
-    titulo.titnum
-    titulo.titpar
-    titulo.titdtven
-    with frame f-tela centered
-    1 down no-label. pause 0.
-    output stream stela close.
     
     /* Registros Acumulados */
     find first ttvven where
@@ -1395,15 +1318,6 @@ first clien where clien.clicod = titulo.clifor no-lock :
     and v-parcela-lp = no
     then next.
     
-    output stream stela to terminal.
-    display stream stela
-    titulo.clifor
-    titulo.titnum
-    titulo.titpar
-    titulo.titdtven
-    with frame f-telaf centered
-    1 down no-label. pause 0.
-    output stream stela close.
     
     /* Registros Acumulados */
     find first ttvven where
@@ -1509,3 +1423,6 @@ run pdfout.p (input vdir + varquivo + ".txt",
     os-command silent value("rm -f " + vdir + varquivo + ".txt").    
 
 end.
+
+
+***/

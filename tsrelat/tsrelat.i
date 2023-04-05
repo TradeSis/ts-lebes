@@ -14,11 +14,6 @@ then do:
     message "TS/Relat " pidrelat "Nao Encontrado".
     return.
 end.    
-if tsrelat.progcod <> "loj_cred01"
-then do:
-    run marcatsrelat ("PARAMETROS INVALIDOS").
-    return.
-end.    
 
 run marcatsrelat ("INICIO").
 

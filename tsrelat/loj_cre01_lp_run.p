@@ -28,15 +28,14 @@ disp ttparametros.
 
 /* inicio normal progress. */
 
-def input param pmodalidade as char.
 
 def temp-table ttmodal no-undo
     field modcod like modal.modcod.
-if pmodalidade = "CREDIARIO"
+if modalidade = "CREDIARIO"
 then do:
     create ttmodal. ttmodal.modcod = "CRE".
 end.
-if pmodalidade = "EMPRESTIMOS"
+if modalidade = "EMPRESTIMOS"
 then do:
     create ttmodal. ttmodal.modcod = "CP0".
     create ttmodal. ttmodal.modcod = "CP1".
@@ -67,28 +66,26 @@ def var vetbcod like estab.etbcod.
 def var vcont-cli  as char format "x(15)" extent 3
       initial ["  Alfabetica  ","  Vencimento  ", "  Novacao "].
 def var valfa  as int.
-def var varquivo as char.
 
-def temp-table tt-depen	
-field accod as int	
-field etbcod like estab.etbcod	
-field fone   as char	
-field dtnasc like plani.pladat	
-field nome   as char format "x(20)".	
-def var vfil17 as char extent 2 format "x(15)"	
-init["Nova","Antiga"].	
+def temp-table tt-depen        
+field accod as int        
+field etbcod like estab.etbcod        
+field fone   as char        
+field dtnasc like plani.pladat        
+field nome   as char format "x(20)".        
+def var vfil17 as char extent 2 format "x(15)"        
+init["Nova","Antiga"].        
 def var vindex as int.
 
 def var v-feirao-nome-limpo as log format "Sim/Nao" initial no.
 
+setbcod = ttparametros.codigofilial.
 
 
 
-
-if ttparametros.posicao = 1
+if ttparametros.posicao = 0
 then do:
 
-repeat:
     for each tt-depen:
         delete tt-depen.
     end.
@@ -100,29 +97,9 @@ repeat:
     end.
 
     ii = 0. vqtdcli = 0.
-
-    if setbcod = 999
-    then update vetbcod colon 25 with title pmodalidade + " - Posicao I " .
-    else do:
-        vetbcod = setbcod.
-        disp vetbcod.
-    end.
+    vetbcod = setbcod.
+    
     find estab where estab.etbcod = vetbcod no-lock no-error.
-    if not avail estab
-    then do:
-        message "Estabelecimento Invalido" .
-        undo.
-    end.
-    display estab.etbnom no-label.
-    vindex = 0.
-    if estab.etbcod = 17
-    then do:
-        disp vfil17 no-label with frame f-17 1 down row 10 centered
-             side-label overlay.
-        pause 0.
-        choose field vfil17  with frame f-17.
-        vindex = ttparametros.ordem.
-    end.
 
     vdtvenini   = ttparametros.dataInicial.
     vdtvenfim   = ttparametros.dataFinal.
@@ -130,9 +107,6 @@ repeat:
 
 
 
-
-    disp vcont-cli no-label with frame f1 centered.
-    choose field vcont-cli with frame f1.
     valfa =  ttparametros.ordem.
 
     varquivo = "loj_cred01_lp_" + string(pidrelat).
@@ -150,10 +124,9 @@ repeat:
     &Width     = "121"
     &Form      = "frame f-cab"}
 
-    message "cre02_lp" pmodalidade " - Posicao I - Ordem" vcont-cli[valfa].
 
     VSUBTOT = 0.
-    if valfa = 1
+    if valfa = 0
     then do:
     do vdata = vdtvenini to vdtvenfim:
         for each ttmodal,
@@ -495,6 +468,9 @@ run pdfout.p (input vdir + varquivo + ".txt",
 
 end.
 
+
+/******
+
 /**************** POSIÇÃO 2 ****************/
 if ttparametros.posicao = 2
 then do: 
@@ -507,13 +483,9 @@ for each ttcli.
     delete ttcli.
 end.
 
-def var vfil17 as char extent 2 format "x(15)"
-    init["Nova","Antiga"].
-
-def var vindex as int.
 
 if setbcod = 999
-then update vetbcod                          colon 25 with title pmodalidade + " - Posicao II ".
+then update vetbcod                          colon 25 with title modalidade + " - Posicao II ".
 else do:
     vetbcod = setbcod.
     disp vetbcod.
@@ -526,24 +498,12 @@ then do:
 end.
 display estab.etbnom no-label.
 pause 0.
-vindex = 0.
-if estab.etbcod = 17
-    then do:
-
-disp vfil17 no-label with frame f-17 1 down row 10 centered
-             side-label overlay.
-        pause 0.
-        choose field vfil17  with frame f-17.
-        vindex = ttparametros.ordem.
-    end.
 
 
     vdtvenini   = ttparametros.dataInicial.
     vdtvenfim   = ttparametros.dataFinal.
     v-feirao-nome-limpo  = ttparametros.considerafeirao.
 
-    disp vcont-cli no-label with frame f1 centered.
-    choose field vcont-cli with frame f1.
     valfa =  ttparametros.ordem.
 
     varquivo = "cre03_lp" + string(setbcod) + "_" + string(today,"99999999") + "_" + replace(string(time,"HH:MM:SS"),":","").
@@ -554,7 +514,7 @@ disp vfil17 no-label with frame f-17 1 down row 10 centered
 output to value("/admcom/relat/" + varquivo + ".txt") page-size 62.
 PUT UNFORMATTED CHR(15)  .
 
-    message "cre03_lp" pmodalidade " - Posicao II - Ordem" vcont-cli[valfa].
+    message "cre03_lp" modalidade " - Posicao II - Ordem" vcont-cli[valfa].
 
 vqtdcli = 0. VSUBTOT = 0.
 PAGE.
@@ -914,3 +874,4 @@ run pdfout.p (input vdir + varquivo + ".txt",
 
 end.
 
+****/
