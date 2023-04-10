@@ -16,6 +16,19 @@ function buscaRelatorios($progcod,$usercod)
         $relatorios = chamaAPI(null, '/relatorios/listagem', json_encode($apiEntrada), 'GET');
         return $relatorios;
 }
+function buscaParametros($idRelat)
+{
+        
+        $entrada = array(
+                'idRelat' => $idRelat
+        );
+        
+        $apiEntrada = array(
+                'entrada' => array($entrada)
+        );
+        $relatorios = chamaAPI(null, '/relatorios/listagem', json_encode($apiEntrada), 'GET');
+        return $relatorios;
+}
 if (isset($_GET['operacao'])) {
 
         $operacao = $_GET['operacao'];
