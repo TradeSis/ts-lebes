@@ -31,9 +31,8 @@ $relatorios = buscaRelatorios(null,null);
                 </div>
             </div>
         </div>
-        <div class="table table-sm table-hover">
-            <table class="table">
-                <!--<table id="tabela" class="table table-bordered mb-0">-->
+        <div class="table table-responsive">
+            <table class="table table-sm table-hover table-bordered">
 
                 <thead class="thead-light">
                     <tr>
@@ -52,7 +51,7 @@ $relatorios = buscaRelatorios(null,null);
                 ?>
                     <tr>
                         <td class="text-center"><?php echo $relatorio['usercod'] ?></td>
-                        <td class="text-center"><?php echo $relatorio['dtinclu'] ?></td>
+                        <td class="text-center"><?php echo date('d/m/Y', strtotime($relatorio['dtinclu'])) ?></td>
                         <td class="text-center"><?php echo $relatorio['hrinclu'] ?></td>
                         <td class="text-center"><?php echo $relatorio['progcod'] ?></td>
                         <td class="text-center"><?php echo $relatorio['relatnom'] ?></td>

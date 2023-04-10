@@ -1,4 +1,7 @@
 <?php
+
+/**************      DESATIVADO         *********************/
+
 // gabriel 09022023 15:35
 
 include_once '../head.php';
@@ -44,8 +47,8 @@ $relatorios = buscaRelatorios($progcod,$parametros);
                 </div>
             </div>
         </div>
-        <div class="table table-sm table-hover">
-            <table class="table">
+        <div class="table table-responsive">
+            <table class="table table-sm table-hover table-bordered">
                 <thead class="thead-light">
                     <tr>
                         <th class="text-center">ID</th>
@@ -65,7 +68,7 @@ $relatorios = buscaRelatorios($progcod,$parametros);
                     <tr>
                         <td class="text-center"><?php echo $relatorio['idRelat'] ?></td>
                         <td class="text-center"><?php echo $relatorio['usercod'] ?></td>
-                        <td class="text-center"><?php echo $relatorio['dtinclu'] ?></td>
+                        <td class="text-center"><?php echo date('d/m/Y', strtotime($relatorio['dtinclu'])) ?></td>
                         <td class="text-center"><?php echo $relatorio['hrinclu'] ?></td>
                         <td class="text-center"><?php echo $relatorio['progcod'] ?></td>
                         <td class="text-center"><?php echo $relatorio['nomeArquivo'] ?></td>

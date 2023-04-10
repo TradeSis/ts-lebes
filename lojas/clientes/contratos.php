@@ -69,8 +69,8 @@ $produtos = $contrato["produtos"];
 
                         </div>
                         <div class="col-8">
-                            <div class="table table-sm table-hover">
-                                <table class="table">
+                        <div class="table table-responsive">
+                             <table class="table table-sm table-hover table-bordered">
                                     <thead>
                                         <tr>
                                             <th class="text-center">Contrato</th>
@@ -85,12 +85,12 @@ $produtos = $contrato["produtos"];
                                     <?php foreach ($parcelas as $parcela) { ?>
                                         <tr>
                                             <td class="text-center"><?php echo $parcela['numeroContrato'] ?></td>
-                                            <td class="text-center"><?php echo $parcela['parcela'] ?></td>
-                                            <td class="text-center"><?php echo $parcela['dtVencimento'] ?></td>
-                                            <td class="text-center"><?php echo $parcela['vlrParcela'] ?></td>
+                                            <td class="text-center"><?php echo number_format($produto['parcela'], 2, ',', '.') ?></td>
+                                            <td class="text-center"><?php echo date('d/m/Y', strtotime($parcela['dtVencimento'])) ?></td>
+                                            <td class="text-center"><?php echo number_format($produto['vlrParcela'], 2, ',', '.') ?></td>
                                             <td class="text-center"><?php echo $parcela['situacao'] ?></td>
-                                            <td class="text-center"><?php echo $parcela['dtPagamento'] ?></td>
-                                            <td class="text-center"><?php echo $parcela['vlrPago'] ?></td>
+                                            <td class="text-center"><?php echo date('d/m/Y', strtotime($parcela['dtPagamento'])) ?></td>
+                                            <td class="text-center"><?php echo number_format($produto['vlrPago'], 2, ',', '.') ?></td>
                                         </tr>
                                     <?php } ?>
 
@@ -101,8 +101,8 @@ $produtos = $contrato["produtos"];
                 </div>
                 <hr>
                 <h5>Produtos</h5>
-                <div class="table table-sm table-hover">
-                    <table class="table">
+                <div class="table table-responsive">
+                    <table class="table table-sm table-hover table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">Código</th>
@@ -116,9 +116,9 @@ $produtos = $contrato["produtos"];
                             <tr>
                                 <td class="text-center"><?php echo $produto['codigoProduto'] ?></td>
                                 <td class="text-center"><?php echo $produto['nomeProduto'] ?></td>
-                                <td class="text-center"><?php echo $produto['precoVenda'] ?></td>
+                                <td class="text-center"><?php echo number_format($produto['precoVenda'], 2, ',', '.') ?></td>
                                 <td class="text-center"><?php echo $produto['quantidade'] ?></td>
-                                <td class="text-center"><?php echo $produto['valorTotal'] ?></td>
+                                <td class="text-center"><?php echo number_format($produto['valorTotal'], 2, ',', '.') ?></td>
                             </tr>
                         <?php } ?>
 

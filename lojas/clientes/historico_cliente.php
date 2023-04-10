@@ -64,8 +64,8 @@ $contratos = $historico["contratos"];
                     </li>
                 </ul>
                 <h5>Contratos</h5>
-                <div class="table table-sm table-hover">
-                    <table class="table">
+                <div class="table table-responsive">
+                    <table class="table table-sm table-hover table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">Cliente</th>
@@ -83,11 +83,11 @@ $contratos = $historico["contratos"];
                             <tr>
                                 <td class="text-center"><?php echo $contrato['codigoCliente'] ?></td>
                                 <td class="text-center"><?php echo $contrato['numeroContrato'] ?></td>
-                                <td class="text-center"><?php echo $contrato['dtemissao'] ?></td>
-                                <td class="text-center"><?php echo $contrato['dtProxVencimento'] ?></td>
-                                <td class="text-center"><?php echo $contrato['valorTotal'] ?></td>
-                                <td class="text-center"><?php echo $contrato['valorEntrada'] ?></td>
-                                <td class="text-center"><?php echo $contrato['valorAberto'] ?></td>
+                                <td class="text-center"><?php echo date('d/m/Y', strtotime($contrato['dtemissao'])) ?></td>
+                                <td class="text-center"><?php echo date('d/m/Y', strtotime($contrato['dtProxVencimento'])) ?></td>
+                                <td class="text-center"><?php echo number_format($contrato['valorTotal'], 2, ',', '.') ?></td>
+                                <td class="text-center"><?php echo number_format($contrato['valorEntrada'], 2, ',', '.') ?></td>
+                                <td class="text-center"><?php echo number_format($contrato['valorAberto'], 2, ',', '.') ?></td>
                                 <td class="text-center"><?php echo $contrato['situacao'] ?></td>
                                 <td class="text-center">
                                     <a class="btn btn-primary btn-sm" href="contratos.php?numeroContrato=<?php echo $contrato['numeroContrato'] ?>" role="button">Consultar</a>

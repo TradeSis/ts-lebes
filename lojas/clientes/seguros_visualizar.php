@@ -48,9 +48,9 @@ $produtos = $seguros["produtos"];
                         <label>Filial</label>
                         <input type="text" class="form-control" value="<?php echo $seguros['codigoFilial'] ?>" readonly>
                         <label>Valor</label>
-                        <input type="text" class="form-control" value="<?php echo $seguros['valorSeguro'] ?>" readonly>
+                        <input type="text" class="form-control" value="<?php echo number_format($seguros['valorSeguro'], 2, ',', '.') ?>" readonly>
                         <label>Vigência Início</label>
-                        <input type="text" class="form-control" value="<?php echo $seguros['dataInicioVigencia'] ?>" readonly>
+                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($seguros['dataInicioVigencia'])) ?>" readonly>
                     </div>
                     <div class="col">
                         <label>Nome</label>
@@ -60,9 +60,9 @@ $produtos = $seguros["produtos"];
                         <label>Certificado</label>
                         <input type="text" class="form-control" value="<?php echo $seguros['numeroCertificado'] ?>" readonly>
                         <label>Transação</label>
-                        <input type="text" class="form-control" value="<?php echo $seguros['dataTransacao'] ?>" readonly>
+                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($seguros['dataTransacao'])) ?>" readonly>
                         <label>Vigência Fim</label>
-                        <input type="text" class="form-control" value="<?php echo $seguros['dataFinalVigencia'] ?>" readonly>
+                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($seguros['dataFinalVigencia'])) ?>" readonly>
                     </div>
                 </div>
                 <div class="mt-2" style="text-align:right">
@@ -70,8 +70,8 @@ $produtos = $seguros["produtos"];
                 </div>
                 <hr>
                 <h5>Produtos</h5>
-                <div class="table table-sm table-hover">
-                    <table class="table">
+                <div class="table table-responsive">
+                    <table class="table table-sm table-hover table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">Código</th>
@@ -85,9 +85,9 @@ $produtos = $seguros["produtos"];
                             <tr>
                                 <td class="text-center"><?php echo $produto['codigoProduto'] ?></td>
                                 <td class="text-center"><?php echo $produto['nomeProduto'] ?></td>
-                                <td class="text-center"><?php echo $produto['precoVenda'] ?></td>
+                                <td class="text-center"><?php echo number_format($produto['precoVenda'], 2, ',', '.') ?></td>
                                 <td class="text-center"><?php echo $produto['quantidade'] ?></td>
-                                <td class="text-center"><?php echo $produto['valorTotal'] ?></td>
+                                <td class="text-center"><?php echo number_format($produto['valorTotal'], 2, ',', '.') ?></td>
                             </tr>
                         <?php } ?>
 
