@@ -68,8 +68,8 @@ $cupons = $cupomcashback["cupom"];
                             <tr>
                                 <td class="text-center"><?php echo $cupom['codigoCliente'] ?></td>
                                 <td class="text-center"><?php echo $cupom['idCupom'] ?></td>
-                                <td class="text-center"><?php echo $date('d/m/Y', strtotime($cupom['dataGeracao'])) ?></td>
-                                <td class="text-center"><?php echo $date('d/m/Y', strtotime($cupom['dataValidade'])) ?></td>
+                                <td class="text-center"><?php echo date('d/m/Y', strtotime($cupom['dataGeracao'])) ?></td>
+                                <td class="text-center"><?php echo date('d/m/Y', strtotime($cupom['dataValidade'])) ?></td>
                                 <td class="text-center"><?php echo number_format($cupom['valorCupom'], 2, ',', '.') ?></td>
                                 <td class="text-center"><?php echo $cupom['percCupom'] ?>%</td>
                                 <td class="text-center"><?php echo date('d/m/Y', strtotime($cupom['dataUtilizacao'])) ?></td>
