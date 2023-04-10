@@ -10,7 +10,7 @@ include_once('../head.php');
             <div class="card-header border-1">
                 <div class="row">
                     <div class="col-10">
-                        <h4 class="col">Resumo liquidações diarias p/ periodo</h4>
+                        <h4 class="col">Liquidações diarias p/ periodo</h4>
                     </div>
                     <div class="col-sm" style="text-align:right">
                         <a href="#" onclick="history.back()" role="button" class="btn btn-primary btn-sm">Voltar</a>
