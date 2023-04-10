@@ -66,8 +66,8 @@ if (isset($_POST['codigoLoja'])) {
                         <td class="text-center"><?php echo number_format($desconto['totalVenda'], 2, ',', '.') ?></td>
                         <td class="text-center"><?php echo number_format($desconto['valorDescontoUtilizado'], 2, ',', '.') ?></td>
                         <td class="text-center"><?php echo number_format($desconto['valorDescontoDisponivel'], 2, ',', '.') ?></td>
-                        <td class="text-center"><?php echo number_format($desconto['percDescontoProdutoMax'], 2, ',', '.')% ?></td>
-                        <td class="text-center"><?php echo number_format($desconto['margem'], 2, ',', '.')% ?></td>
+                        <td class="text-center"><?php echo number_format($desconto['percDescontoProdutoMax'], 2, ',', '.') ?>%</td>
+                        <td class="text-center"><?php echo number_format($desconto['margem'], 2, ',', '.') ?>%</td>
                         <td class="text-center"><?php echo number_format($desconto['totalVendaComAcrescimo'], 2, ',', '.') ?></td>
 
                     </tr>
