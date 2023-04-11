@@ -2,12 +2,12 @@
 
 include_once('../conexao.php');
 
-function buscaRelatorios($progcod,$usercod)
+function buscaRelatorios($progcod,$usercod=null)
 {
         
         $entrada = array(
                 'progcod' => $progcod,
-                'usercod' => $usercod
+                'usercod' => $usercod,
         );
         
         $apiEntrada = array(
@@ -16,19 +16,7 @@ function buscaRelatorios($progcod,$usercod)
         $relatorios = chamaAPI(null, '/relatorios/listagem', json_encode($apiEntrada), 'GET');
         return $relatorios;
 }
-/*function buscaParametros($idRelat)
-{
-        
-        $entrada = array(
-                'idRelat' => $idRelat
-        );
-        
-        $apiEntrada = array(
-                'entrada' => array($entrada)
-        );
-        $relatorios = chamaAPI(null, '/relatorios/listagem', json_encode($apiEntrada), 'GET');
-        return $relatorios;
-} */
+
 if (isset($_GET['operacao'])) {
 
         $operacao = $_GET['operacao'];
@@ -89,6 +77,7 @@ if (isset($_GET['operacao'])) {
                         'progcod' => $_POST['progcod'],
                         'relatnom' => $_POST['relatnom'],
                         'parametros' => $parametros,
+                        'REMOTE_ADDR' =>  $_SERVER['REMOTE_ADDR'],
                 );
                 $relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
                 
@@ -108,8 +97,8 @@ if (isset($_GET['operacao'])) {
                         'usercod' => $_POST['usercod'],
                         'progcod' => $_POST['progcod'],
                         'relatnom' => $_POST['relatnom'],
-                        'remote_addr' =>  $_SERVER["REMOTE_ADDR"],
                         'parametros' => $parametros,
+                        'REMOTE_ADDR' =>  $_SERVER['REMOTE_ADDR'],
                 );
                 $relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
                 
@@ -127,6 +116,7 @@ if (isset($_GET['operacao'])) {
                         'consideralp' => $_POST['consideralp'],
                         'considerafeirao' => $_POST['considerafeirao'],
                         'ordem' => $_POST['ordem'],
+                        'REMOTE_ADDR' =>  $_SERVER['REMOTE_ADDR'],
                 );
                 $apiEntrada = array(
                         'usercod' => $_POST['usercod'],
@@ -150,6 +140,7 @@ if (isset($_GET['operacao'])) {
                         'consideralp' => $_POST['consideralp'],
                         'considerafeirao' => $_POST['considerafeirao'],
                         'ordem' => $_POST['ordem'],
+                        'REMOTE_ADDR' =>  $_SERVER['REMOTE_ADDR'],
                 );
                 $apiEntrada = array(
                         'usercod' => $_POST['usercod'],

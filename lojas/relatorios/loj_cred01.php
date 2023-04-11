@@ -4,19 +4,8 @@
 include_once '../head.php';
 include_once '../database/relatorios.php';
 
-$parametros=null;
-if (isset($_GET['parametros'])) {
-    $parametros = array(
-        'posicao' => $_POST['posicao'],
-        'codigoFilial' => $_POST['codigoFilial'],
-        'dataInicial' => $_POST['dataInicial'],
-        'dataFinal' => $_POST['dataFinal'],
-    );
-}
-
 $progcod="loj_cred01";
-$relatorios = buscaRelatorios($progcod,$parametros);
-$relatorios = $relatorios['relatorios'];
+$relatorios = buscaRelatorios($progcod);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -69,7 +58,7 @@ $relatorios = $relatorios['relatorios'];
                         <td class="text-center"><?php echo $relatorio['nomeArquivo'] ?></td>
                         <td class="text-center"><?php echo $relatorio['REMOTE_ADDR'] ?></td>
                         <td class="text-center">
-                            <a class="btn btn-sm" href="#" data-toggle="modal" data-target="#parametros-modal-<?php echo $relatorio['IDRelat'] ?>">Parâmetros</a>                            
+                            <a class="btn btn-sm" href="#" data-toggle="modal" data-target="#parametros-modal-<?php echo $relatorio['IDRelat'] ?>">Parâmetros</a>
                         </td>
                         <td class="text-center">
                             <a class="btn btn-sm" href="visualizar.php?nomeArquivo=<?php echo $relatorio['nomeArquivo'] ?>">Visualizar</a>
@@ -79,7 +68,7 @@ $relatorios = $relatorios['relatorios'];
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="ModalLabel">Parâmetros do Relatórios</h5>
+                                    <h5 class="modal-title" id="ModalLabel">Parâmetros do Relatorio</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -87,13 +76,13 @@ $relatorios = $relatorios['relatorios'];
                                 <div class="modal-body">
                                     <div class="col">
                                         <label>Posição</label>
-                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros'][0]['posicao'] ?>" readonly>
+                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['posicao'] ?>" readonly>
                                         <label>Filial</label>
-                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros'][0]['codigoFilial'] ?>" readonly>
+                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['codigoFilial'] ?>" readonly>
                                         <label>Data Inicial</label>
-                                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros'][0]['dataInicial'])) ?>" readonly>
+                                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros']['dataInicial'])) ?>" readonly>
                                         <label>Data Final</label>
-                                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros'][0]['dataFinal'])) ?>" readonly>
+                                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros']['dataFinal'])) ?>" readonly>
                                     </div>
                                 </div>
                             </div>
