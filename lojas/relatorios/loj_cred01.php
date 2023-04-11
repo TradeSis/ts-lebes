@@ -16,8 +16,8 @@ if (isset($_GET['parametros'])) {
 
 $progcod="loj_cred01";
 $relatorios = buscaRelatorios($progcod,$parametros);
+$relatorios = $relatorios['relatorios'];
 ?>
-<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -61,7 +61,7 @@ $relatorios = buscaRelatorios($progcod,$parametros);
                 foreach ($relatorios as $relatorio) {
                 ?>
                     <tr>
-                        <td class="text-center"><?php echo $relatorio['idRelat'] ?></td>
+                        <td class="text-center"><?php echo $relatorio['IDRelat'] ?></td>
                         <td class="text-center"><?php echo $relatorio['usercod'] ?></td>
                         <td class="text-center"><?php echo date('d/m/Y', strtotime($relatorio['dtinclu'])) ?></td>
                         <td class="text-center"><?php echo $relatorio['hrinclu'] ?></td>
@@ -69,48 +69,44 @@ $relatorios = buscaRelatorios($progcod,$parametros);
                         <td class="text-center"><?php echo $relatorio['nomeArquivo'] ?></td>
                         <td class="text-center"><?php echo $relatorio['REMOTE_ADDR'] ?></td>
                         <td class="text-center">
-                            <a class="btn btn-sm" href="#parametros?idRelat=<?php echo $relatorio['idRelat'] ?>" data-toggle="modal">Parâmetros</a>
+                            <a class="btn btn-sm" href="#" data-toggle="modal" data-target="#parametros-modal-<?php echo $relatorio['IDRelat'] ?>">Parâmetros</a>                            
                         </td>
                         <td class="text-center">
                             <a class="btn btn-sm" href="visualizar.php?nomeArquivo=<?php echo $relatorio['nomeArquivo'] ?>">Visualizar</a>
                         </td>
                     </tr>
-                <?php } ?>
-            </table>
-        </div>
-    </div>
-
-    <div class="modal fade" id="parametros" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Parâmetros do Relatório</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <?php
-                if (isset($_GET['idRelat'])) {
-                    //$relatparam = buscaParametros($_GET['idRelat'])['parametros'];
-
-                ?>
-                <div class="modal-body">
-                    <div class="col-4">
-                        <label>Posição</label>
-                        <input type="text" class="form-control" value="<?php echo $relatparam['posicao'] ?>" readonly>
-                        <label>Filial</label>
-                        <input type="text" class="form-control" value="<?php echo $relatparam['codigoFilial'] ?>" readonly>
-                        <label>Data Inicial</label>
-                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['dataInicial'])) ?>" readonly>
-                        <label>Data Final</label>
-                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['dataFinal'])) ?>" readonly>
+                    <div class="modal fade" id="parametros-modal-<?php echo $relatorio['IDRelat'] ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="ModalLabel">Parâmetros do Relatórios</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col">
+                                        <label>Posição</label>
+                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros'][0]['posicao'] ?>" readonly>
+                                        <label>Filial</label>
+                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros'][0]['codigoFilial'] ?>" readonly>
+                                        <label>Data Inicial</label>
+                                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros'][0]['dataInicial'])) ?>" readonly>
+                                        <label>Data Final</label>
+                                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros'][0]['dataFinal'])) ?>" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <?php } ?>
+                    <?php } ?>
+                </table>
             </div>
         </div>
-    </div>
-
+        
+    
+    
+    
 </body>
 
 </html>
