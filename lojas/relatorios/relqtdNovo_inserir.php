@@ -44,7 +44,11 @@ $filial = $filial[2];
                     <div class="row">
                         <div class="form-group col">
                             <label>Filial</label>
+                            <?php if ($filial <= 0){ ?>
+                            <input type="number" class="form-control" name="codigoFilial">
+                            <?php } else { ?>
                             <input type="number" class="form-control" value="<?php echo $filial ?>" name="codigoFilial" readonly>
+                            <?php } ?>
                             <input type="text" class="form-control" value="Filial <?php echo $filial ?>" name="REMOTE_ADDR" hidden>
                         </div>
                         <div class="form-group col">
