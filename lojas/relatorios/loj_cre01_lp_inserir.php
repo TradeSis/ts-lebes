@@ -1,6 +1,8 @@
 <?php
 
 include_once('../head.php');
+$filial = explode(".", $_SERVER['REMOTE_ADDR']);
+$filial = $filial[2];
 ?>
 
 <body class="bg-transparent">
@@ -57,7 +59,8 @@ include_once('../head.php');
                     <div class="row">
                         <div class="form-group col">
                             <label>Filial</label>
-                            <input type="number" class="form-control" name="codigoFilial">
+                            <input type="number" class="form-control" value="<?php echo $filial ?>" name="codigoFilial" readonly>
+                            <input type="text" class="form-control" value="Filial <?php echo $filial ?>" name="REMOTE_ADDR" hidden>
                         </div>
                         <div class="form-group col">
                             <label>Data Inicial</label>

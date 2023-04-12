@@ -77,7 +77,7 @@ if (isset($_GET['operacao'])) {
                         'progcod' => $_POST['progcod'],
                         'relatnom' => $_POST['relatnom'],
                         'parametros' => $parametros,
-                        'REMOTE_ADDR' =>  $_SERVER['REMOTE_ADDR'],
+                        'REMOTE_ADDR' =>  $_POST['REMOTE_ADDR'],
                 );
                 $relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
                 
@@ -98,7 +98,7 @@ if (isset($_GET['operacao'])) {
                         'progcod' => $_POST['progcod'],
                         'relatnom' => $_POST['relatnom'],
                         'parametros' => $parametros,
-                        'REMOTE_ADDR' =>  $_SERVER['REMOTE_ADDR'],
+                        'REMOTE_ADDR' =>  $_POST['REMOTE_ADDR'],
                 );
                 $relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
                 
@@ -116,7 +116,7 @@ if (isset($_GET['operacao'])) {
                         'consideralp' => $_POST['consideralp'],
                         'considerafeirao' => $_POST['considerafeirao'],
                         'ordem' => $_POST['ordem'],
-                        'REMOTE_ADDR' =>  $_SERVER['REMOTE_ADDR'],
+                        'REMOTE_ADDR' =>  $_POST['REMOTE_ADDR'],
                 );
                 $apiEntrada = array(
                         'usercod' => $_POST['usercod'],
@@ -140,7 +140,7 @@ if (isset($_GET['operacao'])) {
                         'consideralp' => $_POST['consideralp'],
                         'considerafeirao' => $_POST['considerafeirao'],
                         'ordem' => $_POST['ordem'],
-                        'REMOTE_ADDR' =>  $_SERVER['REMOTE_ADDR'],
+                        'REMOTE_ADDR' =>  $_POST['REMOTE_ADDR'],
                 );
                 $apiEntrada = array(
                         'usercod' => $_POST['usercod'],
