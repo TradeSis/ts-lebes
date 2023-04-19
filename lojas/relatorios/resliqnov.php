@@ -4,7 +4,7 @@
 include_once '../head.php';
 include_once '../database/relatorios.php';
 
-$progcod="relqtdNovo";
+$progcod="resliqnov";
 $relatorios = buscaRelatorios($progcod);
 ?>
 <!DOCTYPE html>
