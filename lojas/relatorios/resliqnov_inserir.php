@@ -48,7 +48,7 @@ $filial = $filial[2];
                                 <option value="Geral">Geral</option>
                                 <option value="Facil">Facil</option>
                             </select>
-                            <input type="text" class="form-control" value="Filial <?php echo $_SERVER['REMOTE_ADDR']?>" name="REMOTE_ADDR" hidden>
+                            <input type="text" class="form-control" value="<?php echo $_SERVER['REMOTE_ADDR']?>" name="REMOTE_ADDR" hidden>
                         </div>
                         <div class="form-group col">
                             <label>Data Inicial</label>

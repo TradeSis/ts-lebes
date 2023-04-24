@@ -49,7 +49,7 @@ $filial = $filial[2];
                             <?php } else { ?>
                             <input type="number" class="form-control" value="<?php echo $filial ?>" name="codigoFilial" readonly>
                             <?php } ?>
-                            <input type="text" class="form-control" value="Filial <?php echo $_SERVER['REMOTE_ADDR']?>" name="REMOTE_ADDR" hidden>
+                            <input type="text" class="form-control" value="<?php echo $_SERVER['REMOTE_ADDR']?>" name="REMOTE_ADDR" hidden>
                         </div>
                         <div class="form-group col">
                             <label>Data Inicial</label>
