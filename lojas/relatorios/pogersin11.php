@@ -76,7 +76,7 @@ $relatorios = buscaRelatorios($progcod);
                                 <div class="modal-body">
                                     <div class="col">
                                         <label>Modalidade</label>
-                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['modalidade'] ?>" readonly>
+                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['modalidade'][0] ?>" readonly>
                                         <label>Filial</label>
                                         <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['codigoFilial'] ?>" readonly>
                                         <label>Data Inicial</label>

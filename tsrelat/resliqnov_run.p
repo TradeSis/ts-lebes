@@ -10,7 +10,7 @@ end.
 {admcab-batch.i new}
 
 def temp-table ttparametros serialize-name "parametros"
-    field cliente   as log
+    field cliente   as char 
     field dataInicial   as date
     field dataFinal     as date.
     
@@ -50,8 +50,11 @@ format ">>,>>>,>>9.99"
 field antec  like titulo.titvlcob column-label "Antecipado"
 format ">>,>>>,>>9.99".
 
-
-    vcre = ttparametros.cliente. 
+   if ttparametros.cliente = "Facil"
+    then
+    vcre = no.
+   else 
+     vcre = yes.
     vdtini = ttparametros.dataInicial. 
     vdtfin= ttparametros.dataFinal. 
 if vcre = no
@@ -178,12 +181,12 @@ for each estab no-lock.
     end.
 end.
 
-varquivo = "pogersin11_" + string(pidrelat).
+varquivo = "resliqnov_" + string(pidrelat).
 vsaida   = vdir + varquivo + ".txt".
 
 output to value(vsaida).
 
-for each wftotal break by wftotal.etbcod with width 127.
+
     form header wempre.emprazsoc
          space(6) "RESLIQ"  at 107
          "Pag.: " at 118 page-number format ">>9" skip
@@ -191,13 +194,17 @@ for each wftotal break by wftotal.etbcod with width 127.
          "PERIODO DE " string(vdtini) " A " string(vdtfin)
          today format "99/99/9999" at 107
          string(time,"hh:mm:ss") at 120
-         skip fill("-",127) format "x(127)" skip
-         with frame fcab no-label page-top no-box width 127.
+         skip fill("-",132) format "x(132)" skip
+         with frame fcab no-label page-top no-box width 132.
     view frame fcab.
 
+    for each wftotal break by wftotal.etbcod 
+                            by wftotal.data with width 132.
     if first-of(wftotal.etbcod)
     then vtotal = 0.
     vtotal = wftotal.atras + wftotal.pont1 + wftotal.pont2 + wftotal.antec.
+    if vtotal > 0
+    then do:
     display wftotal.etbcod
             wftotal.atras (TOTAL)
             wftotal.pont1 (TOTAL)
@@ -205,16 +212,16 @@ for each wftotal break by wftotal.etbcod with width 127.
             wftotal.antec (TOTAL).  /****** tirar , colocar Prest. Filial ***/
    display vtotal        (TOTAL).  /******* tirar ******/
 end.
+end.
 output close.
-
 def var vpdf as char.
-    run pdfout.p (input vdir + varquivo + ".txt",
-                  input vdir,
-                  input varquivo + ".pdf",
-                  input "Landscape", /* Landscape/Portrait */
-                  input 7,
-                  input 1,
+    run pdfout.p (input vdir + varquivo + ".txt", 
+                  input vdir, 
+                  input varquivo + ".pdf", 
+                  input "Landscape", /* Landscape/Portrait */ 
+                  input 7, 
+                  input 1, 
                   output vpdf).
- 
-    run marcatsrelat (vdirweb + varquivo + ".pdf").
-    os-command silent value("rm -f " + vdir + varquivo + ".txt").   
+                    
+    run marcatsrelat (vdirweb + varquivo + ".pdf"). 
+    os-command silent value("rm -f " + vdir + varquivo + ".txt").  
