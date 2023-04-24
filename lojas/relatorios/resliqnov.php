@@ -7,11 +7,7 @@ include_once '../database/relatorios.php';
 $progcod="resliqnov";
 $relatorios = buscaRelatorios($progcod);
 ?>
-<script>
- setTimeout(() => {
-  document.location.reload();
-}, 3000); 
-</script>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
