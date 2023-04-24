@@ -21,7 +21,7 @@ $filial = $filial[2];
             </div>
             <div class="container" style="margin-top: 10px">
 
-                <form action="../database/relatorios.php?operacao=pogersin11" method="post">
+                <form action="../database/relatorios.php?operacao=pogersin11" method="post" onkeydown="return event.key != 'Enter';">
                     <div class="row">
                         <div class="col">
                             <label>Usuário</label>
@@ -111,7 +111,7 @@ $filial = $filial[2];
                         </div>
 
                     </div>
-                    <div class="row">
+                    <div class="row" name="datas" hidden>
                         <div class="form-group col">
                             <label>Data Inicial</label>
                             <input type="date" class="form-control" name="dataInicial">
@@ -120,7 +120,7 @@ $filial = $filial[2];
                             <label>Data Final</label>
                             <input type="date" class="form-control" name="dataFinal">
                         </div>
-                        <input type="text" class="form-control" value="Filial <?php echo $filial ?>" name="REMOTE_ADDR"
+                        <input type="text" class="form-control" value="Filial <?php echo $_SERVER['REMOTE_ADDR']?>" name="REMOTE_ADDR"
                             hidden>
                     </div>
 
@@ -131,6 +131,24 @@ $filial = $filial[2];
             </div>
         </div>
     </div>
+
+<script>
+    var inputEstab = document.querySelector('input[name="estab"]');
+    var datasDiv = document.querySelector('div[name="datas"]');
+    var dataRefInput = document.querySelector('input[name="dataRef"]');
+    var selectFilial = document.querySelector('select[name="filial"]');
+
+    inputEstab.addEventListener("keyup", function(event) {
+        if (event.key === "Enter" && inputEstab.value === "") {
+            datasDiv.hidden = false;
+            dataRefInput.readOnly = true;
+        }
+        if (event.key === "Enter" && parseInt(inputEstab.value) > 0) {
+        selectFilial.setAttribute("readonly", "true");
+        }
+    });
+
+</script>
 
 </body>
 
