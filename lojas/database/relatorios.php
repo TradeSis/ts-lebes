@@ -191,19 +191,18 @@ if (isset($_GET['operacao'])) {
                 header('Location: ../relatorios/pogersin11.php'); 
         }
 
-        //POSICAO VENCIDOS E A VENCER
-        if ($operacao == "pogersin11") {
+         //POSICAO VENCIDOS E A VENCER
+         if ($operacao == "pogersin11") {
                 $dataInicial = $_POST['dataInicial'];
 		$dataFinal = $_POST['dataFinal'];
 		$dataRef = $_POST['dataRef'];
 
-		if(isset($_POST['modalidade'])) {
-    			$modalidades = [];
+	if(isset($_POST['modalidade'])) {
     			foreach($_POST['modalidade'] as $modalidade) {
-       				$modalidades[] = $modalidade;
-    			}
-    			$parametros['modalidade'] = $modalidades;
+        			echo $modalidade . '<br>';
+   			}
 		}
+
 
                 if ($dataInicial == "") {
 			$dataInicial = null;
@@ -219,6 +218,7 @@ if (isset($_GET['operacao'])) {
 
                 $parametros = array(
                         'cliente' => $_POST['cliente'],
+                        'modalidade' => $_POST['modalidade'],
                         'estab' => $_POST['estab'],
                         'filial' => $_POST['filial'],
                         'dataRef' => $dataRef,
@@ -227,7 +227,6 @@ if (isset($_GET['operacao'])) {
                         'consideralp' => $_POST['consideralp'],
                         'considerafeirao' => $_POST['considerafeirao'],
                         'clientesnovos' => $_POST['clientesnovos'],
-			'modalidade' => $_POST['modalidade'] ?? [],
                 );
                 $apiEntrada = array(
                         'usercod' => $_POST['usercod'],
