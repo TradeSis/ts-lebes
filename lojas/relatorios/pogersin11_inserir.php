@@ -12,7 +12,7 @@ $filial = $filial[2];
             <div class="card-header border-1">
                 <div class="row">
                     <div class="col-10">
-                        <h4 class="col">PosiÃ§Ã£o financeira vencidos/a vencer</h4>
+                        <h4 class="col">Posição financeira vencidos/a vencer</h4>
                     </div>
                     <div class="col-sm" style="text-align:right">
                         <a href="#" onclick="history.back()" role="button" class="btn btn-primary btn-sm">Voltar</a>
@@ -24,7 +24,7 @@ $filial = $filial[2];
                 <form action="../database/relatorios.php?operacao=pogersin11" method="post">
                     <div class="row">
                         <div class="col">
-                            <label>UsuÃ¡rio</label>
+                            <label>Usuário</label>
                             <div class="form-group">
                                 <input type="text" name="usercod" class="form-control" value="Lebes" autocomplete="off"
                                     readonly>
@@ -40,7 +40,7 @@ $filial = $filial[2];
                     </div>
                     <div class="row">
                         <div class="form-group col">
-                            <label>Nome do relatÃ³rio</label>
+                            <label>Nome do relatório</label>
                             <input type="text" name="relatnom" class="form-control"
                                 value="Posicao financeira vencidos/a vencer" autocomplete="off" readonly>
                         </div>
@@ -90,7 +90,7 @@ $filial = $filial[2];
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label>Data ReferÃªncia</label>
+                                <label>Data Referência</label>
                                 <input type="date" class="form-control" name="dataRef">
 
                             </div>
@@ -125,7 +125,7 @@ $filial = $filial[2];
                     </div>
 
                     <div class="card-footer bg-transparent" style="text-align:right">
-                        <button type="submit" class="btn btn-sm btn-success">Gerar RelatÃ³rio</button>
+                        <button type="submit" class="btn btn-sm btn-success">Gerar Relatório</button>
                     </div>
                 </form>
             </div>
