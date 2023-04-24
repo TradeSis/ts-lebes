@@ -7,6 +7,11 @@ include_once '../database/relatorios.php';
 $progcod="loj_cred01";
 $relatorios = buscaRelatorios($progcod);
 ?>
+<script>
+ setTimeout(() => {
+  document.location.reload();
+}, 3000); 
+</script>
 <!DOCTYPE html>
 <html lang="pt-BR">
 

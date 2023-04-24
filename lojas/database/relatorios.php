@@ -188,7 +188,7 @@ if (isset($_GET['operacao'])) {
                 );
                 
                 $relatorios = chamaAPI(null, '/relatorios/inserir', json_encode($apiEntrada), 'PUT');
-                header('Location: ../relatorios/pogersin11.php'); 
+                header('Location: ../relatorios/resliqnov.php'); 
         }
 
         //POSICAO VENCIDOS E A VENCER
