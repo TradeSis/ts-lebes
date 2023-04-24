@@ -74,20 +74,42 @@ $relatorios = buscaRelatorios($progcod);
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="col">
-                                        <label>Modalidade</label>
-                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['modalidade'][0] ?>" readonly>
-                                        <label>Filial</label>
-                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['codigoFilial'] ?>" readonly>
-                                        <label>Data Inicial</label>
-                                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros']['dataInicial'])) ?>" readonly>
-                                        <label>Data Final</label>
-                                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros']['dataFinal'])) ?>" readonly>
-                                        <label>Considera LP</label>
-                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['consideralp'] ?>" readonly>
-                                        <label>Considera Feirão</label>
-                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['considerafeirao'] ?>" readonly>
+                                    <div class="row">
+                                        <div class="col">
+                                        <?php if ($relatorio['parametros']['estab'] == null) { ?>
+                                            <label>Estabelecimento</label>
+                                            <input type="text" class="form-control" value="Geral" readonly>
+                                        <?php } else { ?>
+                                            <label>Estabelecimento</label>
+                                            <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['estab'] ?>" readonly>
+                                        <?php } ?> 
+                                            <label>Modalidade</label>
+                                            <input type="text" class="form-control" value="<?php echo implode(",", $relatorio['parametros']['modalidade']); ?>" readonly>
+                                            <label>Por Filial</label>
+                                            <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['filial'] ?>" readonly>
+                                        </div>
+                                        <div class="col">
+                                            <label>Considera LP</label>
+                                            <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['consideralp'] ?>" readonly>
+                                            <label>Considera Feirão</label>
+                                            <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['considerafeirao'] ?>" readonly>
+                                            <label>Somente Clientes Novos</label>
+                                            <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['clientesnovos'] ?>" readonly>
+                                        </div>
                                     </div>
+                                    <?php if ($relatorio['parametros']['dataInicial'] == null) { ?>
+                                        <div class="form-group">
+                                            <label>Data Referência</label>
+                                            <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros']['dataRef'])) ?>" readonly>
+                                        </div>
+                                    <?php } else { ?>
+                                        <div class="form-group">
+                                            <label>Data Inicial</label>
+                                            <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros']['dataInicial'])) ?>" readonly>
+                                            <label>Data Final</label>
+                                            <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros']['dataFinal'])) ?>" readonly>
+                                        </div>
+                                    <?php } ?> 
                                 </div>
                             </div>
                         </div>

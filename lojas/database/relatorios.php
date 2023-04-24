@@ -191,18 +191,24 @@ if (isset($_GET['operacao'])) {
                 header('Location: ../relatorios/pogersin11.php'); 
         }
 
-         //POSICAO VENCIDOS E A VENCER
-         if ($operacao == "pogersin11") {
+        //POSICAO VENCIDOS E A VENCER
+        if ($operacao == "pogersin11") {
+                $estab = $_POST['estab'];
                 $dataInicial = $_POST['dataInicial'];
 		$dataFinal = $_POST['dataFinal'];
 		$dataRef = $_POST['dataRef'];
 
-	if(isset($_POST['modalidade'])) {
+		if(isset($_POST['modalidade'])) {
+    			$modalidades = array();
     			foreach($_POST['modalidade'] as $modalidade) {
-        			echo $modalidade . '<br>';
-   			}
+       				$modalidades = $modalidade;
+    			}
+    			$parametros['modalidade'] = $modalidades;
 		}
 
+                if ($estab == "") {
+			$estab = null;
+		}
 
                 if ($dataInicial == "") {
 			$dataInicial = null;
@@ -219,7 +225,7 @@ if (isset($_GET['operacao'])) {
                 $parametros = array(
                         'cliente' => $_POST['cliente'],
                         'modalidade' => $_POST['modalidade'],
-                        'estab' => $_POST['estab'],
+                        'estab' => $estab,
                         'filial' => $_POST['filial'],
                         'dataRef' => $dataRef,
                         'dataInicial' => $dataInicial,
