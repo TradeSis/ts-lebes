@@ -12,7 +12,7 @@ end.
 def temp-table ttparametros serialize-name "parametros"
     field FilialInicial  as int
     field FilialFinal   as int
-    field dataInicial   as date
+    field dataInicial   as int
     field dataFinal     as date.
     
 hEntrada = temp-table ttparametros:HANDLE.
@@ -28,23 +28,25 @@ def var filialini as int init 1.
 def var filialfim as int init 134.
 def var dataini as date init today.
 def var datafim as date init today.
-
+def var varquivo as char.
 def var inut as int.
 def var semchave as int.
 
 /* Atualiza variaveis */
 filialini = ttparametros.FilialInicial.
 filialfim = ttparametros.FilialFinal.
-dataini   = ttparametros.dataInicial.
-datafim   = ttparametros.dataFinal.
+dataini = ttparametros.dataInicial.
+datafim = ttparametros.dataFinal.
 
 /* Inicia o gerenciador de Impressao*/
-
-varquivo = "vendas_nfce_" + string(pidrelat).
-vsaida   = vdir + varquivo + ".txt".
+if opsys = "UNIX"
+ then
+ varquivo = "/admcom/relat/vendas_nfce." + string(time).
+ else
+ varquivo = "l:\relat\vendas_nfce" + string(day(today)).
 
  {mdad.i
-  &Saida     = "value(vsaida)"
+  &Saida     = "value(varquivo)"
   &Page-Size = "64"
   &Cond-Var  = "135"
   &Page-Line = "66"
@@ -75,7 +77,8 @@ for each plani where pladat >= dataini and
 
             find tipmov where tipmov.movtdc = plani.movtdc no-lock.
 
-            disp plani.emite(count) estab.munic estab.etbcgc plani.desti format ">>>>>>>>>>9" plani.cxacod plani.numero plani.serie plani.pladat plani.platot(total) plani.movtdc format ">>9" tipmov.movtnom plani.ufdes label "Chave" format "x(44)" with width 400.
+            disp plani.emite(count) estab.munic estab.etbcgc plani.desti format ">>>>>>>>>>9" plani.cxacod plani.numero plani.serie plani.pladat plani.platot(total) plani.movtdc format ">>9" tipmov.movtnom plani.ufdes label "Chave" ~
+format "x(44)" with width 400.
     end.
 
 end.
@@ -90,7 +93,7 @@ def var vpdf as char.
                   input vdir,
                   input varquivo + ".pdf",
                   input "Landscape", /* Landscape/Portrait */
-                  input 6,
+                  input 7,
                   input 1,
                   output vpdf).
  

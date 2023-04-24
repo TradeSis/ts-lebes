@@ -51,6 +51,7 @@ def temp-table tt-produ
     index tt numero desc
              procod desc.
     
+def var varquivo as char format "x(20)".
 def stream stela.
 def var vtipmov like tipmov.movtnom.
 
@@ -117,11 +118,10 @@ end.
     then vv = "A".
     else vv = "F".
 
-varquivo = "anavenlj_" + string(pidrelat).
-vsaida   = vdir + varquivo + ".txt".
-   
+varquivo = "/admcom/relat/anavenlj" + string(mtime).
+
 {mdadmcab.i
-        &Saida     = "value(vsaida)"
+        &Saida     = "value(varquivo)"
         &Page-Size = "63"
         &Cond-Var  = "143"
         &Page-Line = "66"
@@ -472,6 +472,7 @@ disp skip(5)
 
 output close.
 
+def var vpdf as char.
     run pdfout.p (input vdir + varquivo + ".txt",
                   input vdir,
                   input varquivo + ".pdf",

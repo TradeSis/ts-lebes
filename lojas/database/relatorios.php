@@ -193,41 +193,17 @@ if (isset($_GET['operacao'])) {
 
         //POSICAO VENCIDOS E A VENCER
         if ($operacao == "pogersin11") {
-                $dataInicial = $_POST['dataInicial'];
-		$dataFinal = $_POST['dataFinal'];
-		$dataRef = $_POST['dataRef'];
-
-		if(isset($_POST['modalidade'])) {
-    			$modalidades = [];
-    			foreach($_POST['modalidade'] as $modalidade) {
-       				$modalidades[] = $modalidade;
-    			}
-    			$parametros['modalidade'] = $modalidades;
-		}
-
-                if ($dataInicial == "") {
-			$dataInicial = null;
-		}
-
-                if ($dataFinal == "") {
-			$dataFinal = null;
-		}
-
-                if ($dataRef == "") {
-			$dataRef = null;
-		}
-
                 $parametros = array(
                         'cliente' => $_POST['cliente'],
+                        'modalidade' => $_POST['modalidade'],
                         'estab' => $_POST['estab'],
-                        'filial' => $_POST['filial'],
-                        'dataRef' => $dataRef,
-                        'dataInicial' => $dataInicial,
-                        'dataFinal' => $dataFinal,
+                        'dataRef' => $_POST['dataRef'],
+                        'codigoFilial' => $_POST['codigoFilial'],
+                        'dataInicial' => $_POST['dataInicial'],
+                        'dataFinal' => $_POST['dataFinal'],
                         'consideralp' => $_POST['consideralp'],
                         'considerafeirao' => $_POST['considerafeirao'],
                         'clientesnovos' => $_POST['clientesnovos'],
-			'modalidade' => $_POST['modalidade'] ?? [],
                 );
                 $apiEntrada = array(
                         'usercod' => $_POST['usercod'],

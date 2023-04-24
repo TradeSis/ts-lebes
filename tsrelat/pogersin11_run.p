@@ -10,12 +10,11 @@ end.
 {admcab-batch.i new}
 
 def temp-table ttparametros serialize-name "parametros"
-    field cliente  as log 
-    field clientesnovos  as log 
-    field considerafeirao  as log 
-    field consideralp  as log 
+    field cliente  as log
+    field clientesnovos  as log
+    field considerafeirao  as log
+    field consideralp  as log
     field estab  as int
-    field filial as log
     field dataRef   as date
     field dataInicial   as date
     field dataFinal   as date
@@ -59,6 +58,7 @@ def var par-paga as int.
 def var pag-atraso as log.
 def buffer ctitulo for fin.titulo.
 
+def var varquivo as char format "x(20)".
 def var vdti as date.
 def var vdtf as date.
 def var vporestab as log format "Sim/Nao".
@@ -111,6 +111,7 @@ def temp-table tt-etbtit
 def var vval-carteira as dec.                                
                                 
 form
+   a-seelst format "x" column-label "*"
    tt-modalidade-padrao.modcod no-label
    with frame f-nome
       centered down title "Modalidades"
@@ -127,10 +128,11 @@ for each profin no-lock.
 
 end.
 
- vcre = ttparametros.cliente.
+ vcre = ttparametros.cliente
 
 assign sresp = false.
 
+update sresp label "Seleciona Modalidades?" colon 25
 
 if sresp
 then do:
@@ -197,6 +199,7 @@ end.
 
 vetbcod = input estab.etbcod.
 
+if vporestab = no
 vdtref = ttparametros.dataRef.
 v-consulta-parcelas-LP = ttparametros.consideralp.
 v-feirao-nome-limpo = ttparametros.considerafeirao.
@@ -829,17 +832,16 @@ end.
 message "Gerando o Relatorio ".
 
 def buffer bestab for estab.
-
 def var varq as char format "x(20)".
-varquivo = "pogersin11_" + string(pidrelat).
-vsaida   = vdir + varquivo + ".txt".
-
+    if opsys = "UNIX"
+    then varquivo = "../relat/relx" + string(time) .
+    else varquivo = "l:~\relat~\relw" + string(time).
 
     if vdtref = ?
     then vdtref = vdtf.
     
     {mdad.i
-            &Saida     = "value(vsaida)" 
+            &Saida     = "value(varquivo)" 
             &Page-Size = "64"
             &Cond-Var  = "140"
             &Page-Line = "66"
@@ -1022,6 +1024,15 @@ end procedure.
 
 
 
+procedure p-seleciona-filiais:
+            
+{sklcls.i
+    &File   = tt-modalidade-padrao
+    &help   = "                ENTER=Marca F4=Retorna F8=Marca Tudo"
+    &CField = tt-modalidade-padrao.modcod    
+    &Ofield = " tt-modalidade-padrao.modcod"
+    &Where  = " true"
+    &noncharacter = 
 
 
 
