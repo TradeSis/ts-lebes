@@ -37,9 +37,8 @@ if (isset($_POST['codigoLoja'])) {
                 </div>
             </div>
         </div>
-        <div class="table table-sm table-hover">
-            <table class="table">
-                <!--<table id="tabela" class="table table-bordered mb-0">-->
+        <div class="table table-responsive">
+            <table class="table table-sm table-hover table-bordered">
 
                 <thead class="thead-light">
                     <tr>
@@ -62,14 +61,14 @@ if (isset($_POST['codigoLoja'])) {
                     <tr>
                         <td class="text-center"><?php echo $desconto['codigoLoja'] ?></td>
                         <td class="text-center"><?php echo $desconto['linha'] ?></td>
-                        <td class="text-center"><?php echo $desconto['periodoVendaInicial'] ?></td>
-                        <td class="text-center"><?php echo $desconto['periodoVendaFinal'] ?></td>
-                        <td class="text-center"><?php echo $desconto['totalVenda'] ?></td>
-                        <td class="text-center"><?php echo $desconto['valorDescontoUtilizado'] ?></td>
-                        <td class="text-center"><?php echo $desconto['valorDescontoDisponivel'] ?></td>
-                        <td class="text-center"><?php echo $desconto['percDescontoProdutoMax'] ?></td>
-                        <td class="text-center"><?php echo $desconto['margem'] ?></td>
-                        <td class="text-center"><?php echo $desconto['totalVendaComAcrescimo'] ?></td>
+                        <td class="text-center"><?php echo date('d/m/Y', strtotime($desconto['periodoVendaInicial'])) ?></td>
+                        <td class="text-center"><?php echo date('d/m/Y', strtotime($desconto['periodoVendaFinal'])) ?></td>
+                        <td class="text-center"><?php echo number_format($desconto['totalVenda'], 2, ',', '.') ?></td>
+                        <td class="text-center"><?php echo number_format($desconto['valorDescontoUtilizado'], 2, ',', '.') ?></td>
+                        <td class="text-center"><?php echo number_format($desconto['valorDescontoDisponivel'], 2, ',', '.') ?></td>
+                        <td class="text-center"><?php echo number_format($desconto['percDescontoProdutoMax'], 2, ',', '.') ?>%</td>
+                        <td class="text-center"><?php echo number_format($desconto['margem'], 2, ',', '.') ?>%</td>
+                        <td class="text-center"><?php echo number_format($desconto['totalVendaComAcrescimo'], 2, ',', '.') ?></td>
 
                     </tr>
                 <?php } ?>

@@ -1,3 +1,11 @@
+vendor
+vendor/*
+painel
+painel/*
+services
+services/*
+sistema
+sistema/*
 head.php
 conexao.php
 config.php

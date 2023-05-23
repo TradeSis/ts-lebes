@@ -47,7 +47,7 @@ if (isset($_GET['parametros'])) {
                         <label>CPF/CNPJ</label>
                         <input type="text" class="form-control" value="<?php echo $cliente['cpfCNPJ'] ?>" readonly>
                         <label>Bonus Utilizado</label>
-                        <input type="text" class="form-control" value="<?php echo $bonus['bonusUtil'] ?>" readonly>
+                        <input type="text" class="form-control" value="<?php echo number_format($bonus['bonusUtil'], 2, ',', '.') ?>" readonly>
                     </div>
                     <div class="col">
                         <label>Nome</label>
@@ -55,7 +55,7 @@ if (isset($_GET['parametros'])) {
                         <label>Aniversario</label>
                         <input type="text" class="form-control" value="<?php echo $bonus['aniversario'] ?>" readonly>
                         <label>Bonus Disponível</label>
-                        <input type="text" class="form-control" value="<?php echo $bonus['bonusDisp'] ?>" readonly>
+                        <input type="text" class="form-control" value="<?php echo number_format($bonus['bonusDisp'], 2, ',', '.') ?>" readonly>
                     </div>
                 </div>
             </div>

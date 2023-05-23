@@ -68,6 +68,10 @@ include_once 'conexao.php';
                             <a class="dropdown-item" href="#" src="relatorios/loj_cred01.php">Extrato de cobrança simples</a>
                             <a class="dropdown-item" href="#" src="relatorios/loj_cre01_ma.php">Posição de cliente por periodo - A</a>
                             <a class="dropdown-item" href="#" src="relatorios/loj_cre01_lp.php">Posição de cliente por periodo - B</a>
+                            <a class="dropdown-item" href="#" src="relatorios/anavenlj.php">Conferência notas de transfêrencia</a>
+                            <a class="dropdown-item" href="#" src="relatorios/vendas_nfce.php">Vendas NFCE</a>
+                            <a class="dropdown-item" href="#" src="relatorios/resliqnov.php">Resumo liquidações p/periodo Novação</a>
+                            <a class="dropdown-item" href="#" src="relatorios/pogersin11.php">Posição financeira vencidos/a vencer</a>
                             
                         </div>
                     </li>

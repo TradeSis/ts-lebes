@@ -4,10 +4,14 @@
 include_once '../head.php';
 include_once '../database/relatorios.php';
 
-$progcod="loj_cre01_ma";
+$progcod="anavenlj";
 $relatorios = buscaRelatorios($progcod);
 ?>
-
+<script>
+ setTimeout(() => {
+  document.location.reload();
+}, 3000); 
+</script>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -18,7 +22,7 @@ $relatorios = buscaRelatorios($progcod);
             <div class="card-header">
                 <div class="row">
                     <div class="col-9">
-                        <h3 class="col">Posição cliente por periodo - A</h3>
+                        <h3 class="col">Conferência das notas de transfêrencia</h3>
                     </div>
                     <div class="col-1" style="text-align:right">
                         <a href="#" role="button" class="btn btn-info btn-sm" onClick="window.location.reload()">
@@ -27,7 +31,7 @@ $relatorios = buscaRelatorios($progcod);
                         </a>
                     </div>
                     <div class="col-2" style="text-align:right">
-                        <a href="loj_cre01_ma_inserir.php" role="button" class="btn btn-success btn-sm">Novo Relatório</a>
+                        <a href="anavenlj_inserir.php" role="button" class="btn btn-success btn-sm">Novo Relatório</a>
                     </div>
                 </div>
             </div>
@@ -76,18 +80,14 @@ $relatorios = buscaRelatorios($progcod);
                                 </div>
                                 <div class="modal-body">
                                     <div class="col">
-                                        <label>Modalidade</label>
-                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['modalidade'] ?>" readonly>
                                         <label>Filial</label>
                                         <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['codigoFilial'] ?>" readonly>
                                         <label>Data Inicial</label>
-                                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros']['dataInicial'])) ?>" readonly>
-                                        <label>Data Final</label>
-                                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros']['dataFinal'])) ?>" readonly>
-                                        <label>Considera LP</label>
-                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['consideralp'] ?>" readonly>
-                                        <label>Considera Feirão</label>
-                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['considerafeirao'] ?>" readonly>
+                                        <input type="text" class="form-control" value="<?php echo date('d/m/Y', strtotime($relatorio['parametros']['data'])) ?>" readonly>
+                                        <label>Cod. Movimentaçao</label>
+                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['codMov'] ?>" readonly>
+                                        <label>Departamento</label>
+                                        <input type="text" class="form-control" value="<?php echo $relatorio['parametros']['departamento'] ?>" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -98,6 +98,9 @@ $relatorios = buscaRelatorios($progcod);
             </div>
         </div>
         
+    
+    
+    
 </body>
 
 </html>

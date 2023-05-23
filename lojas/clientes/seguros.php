@@ -45,10 +45,8 @@ $seguros = buscaSeguros($codigoCliente, $codigoFilial, $recID);
                 </div>
             </div>
         </div>
-        <div class="table table-sm table-hover">
-            <table class="table">
-                <!--<table id="tabela" class="table table-bordered mb-0">-->
-
+        <div class="table table-responsive">
+            <table class="table table-sm table-hover table-bordered">
                 <thead class="thead-light">
                     <tr>
                         <th class="text-center">Cliente</th>
@@ -75,10 +73,10 @@ $seguros = buscaSeguros($codigoCliente, $codigoFilial, $recID);
                         <td class="text-center"><?php echo $seguro['nomeTipoSeguro'] ?></td>
                         <td class="text-center"><?php echo $seguro['codigoFilial'] ?></td>
                         <td class="text-center"><?php echo $seguro['numeroCertificado'] ?></td>
-                        <td class="text-center"><?php echo $seguro['valorSeguro'] ?></td>
-                        <td class="text-center"><?php echo $seguro['dataTransacao'] ?></td>
-                        <td class="text-center"><?php echo $seguro['dataInicioVigencia'] ?></td>
-                        <td class="text-center"><?php echo $seguro['dataFinalVigencia'] ?></td>
+                        <td class="text-center"><?php echo number_format($seguro['valorSeguro'], 2, ',', '.') ?></td>
+                        <td class="text-center"><?php echo date('d/m/Y', strtotime($seguro['dataTransacao'])) ?></td>
+                        <td class="text-center"><?php echo date('d/m/Y', strtotime($seguro['dataInicioVigencia'])) ?></td>
+                        <td class="text-center"><?php echo date('d/m/Y', strtotime($seguro['dataFinalVigencia'])) ?></td>
                         <td class="text-center">
                             <a class="btn btn-primary btn-sm" href="seguros_visualizar.php?recID=<?php echo $seguro['recID'] ?>" role="button">Visualizar</a>
                         </td>
